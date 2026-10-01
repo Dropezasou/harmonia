@@ -1,0 +1,980 @@
+{
+ "_doc": "Base local de bebidas para auto-preenchimento (notas = descritores mais citados nas fichas dos produtores e em reviews). 'type' de preferência igual a um tipo de drink-types.json. Adicione itens no mesmo formato.",
+ "drinks": [
+  {
+   "category": "whisky",
+   "brand": "Buffalo Trace",
+   "name": "Kentucky Straight Bourbon",
+   "type": "Bourbon",
+   "body": "medio",
+   "notes": [
+    "caramelo",
+    "baunilha",
+    "acucar-mascavo",
+    "canela"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Maker's Mark",
+   "name": "Bourbon",
+   "type": "Bourbon",
+   "body": "medio",
+   "notes": [
+    "caramelo",
+    "baunilha",
+    "mel",
+    "carvalho"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Woodford Reserve",
+   "name": "Distiller's Select",
+   "type": "Bourbon",
+   "body": "encorpado",
+   "notes": [
+    "frutas-secas",
+    "caramelo",
+    "chocolate",
+    "especiarias"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Wild Turkey",
+   "name": "101",
+   "type": "Bourbon",
+   "body": "encorpado",
+   "notes": [
+    "caramelo",
+    "baunilha",
+    "pimenta",
+    "carvalho"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Bulleit",
+   "name": "Bourbon",
+   "type": "Bourbon",
+   "body": "medio",
+   "notes": [
+    "carvalho",
+    "baunilha",
+    "especiarias",
+    "noz-moscada"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Four Roses",
+   "name": "Single Barrel",
+   "type": "Bourbon",
+   "body": "encorpado",
+   "notes": [
+    "frutas-escuras",
+    "especiarias",
+    "baunilha",
+    "carvalho"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Eagle Rare",
+   "name": "10 anos",
+   "type": "Bourbon",
+   "body": "medio",
+   "notes": [
+    "toffee",
+    "mel",
+    "carvalho",
+    "couro"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Blanton's",
+   "name": "Original Single Barrel",
+   "type": "Bourbon",
+   "body": "encorpado",
+   "notes": [
+    "caramelo",
+    "baunilha",
+    "frutas-secas",
+    "canela"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Jack Daniel's",
+   "name": "Old No. 7",
+   "type": "Tennessee",
+   "body": "medio",
+   "notes": [
+    "caramelo",
+    "baunilha",
+    "madeira",
+    "frutas-tropicais"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Gentleman Jack",
+   "name": "Tennessee",
+   "type": "Tennessee",
+   "body": "leve",
+   "notes": [
+    "caramelo",
+    "baunilha",
+    "frutas-tropicais"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Bulleit",
+   "name": "Rye",
+   "type": "Rye",
+   "body": "medio",
+   "notes": [
+    "pimenta",
+    "especiarias",
+    "baunilha",
+    "carvalho"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Glenfiddich",
+   "name": "12 anos",
+   "type": "Single Malt Speyside",
+   "body": "leve",
+   "notes": [
+    "maca-pera",
+    "creme",
+    "malte",
+    "carvalho"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Glenfiddich",
+   "name": "15 anos Solera",
+   "type": "Single Malt Speyside",
+   "body": "medio",
+   "notes": [
+    "mel",
+    "frutas-secas",
+    "canela",
+    "baunilha"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "The Glenlivet",
+   "name": "12 anos",
+   "type": "Single Malt Speyside",
+   "body": "leve",
+   "notes": [
+    "frutas-tropicais",
+    "floral",
+    "baunilha",
+    "mel"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "The Macallan",
+   "name": "12 anos Sherry Oak",
+   "type": "Single Malt Sherry Cask",
+   "body": "encorpado",
+   "notes": [
+    "frutas-secas",
+    "baunilha",
+    "especiarias",
+    "madeira"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "The Macallan",
+   "name": "12 anos Double Cask",
+   "type": "Single Malt Speyside",
+   "body": "medio",
+   "notes": [
+    "mel",
+    "frutas-secas",
+    "baunilha",
+    "caramelo"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "The Balvenie",
+   "name": "12 anos DoubleWood",
+   "type": "Single Malt Speyside",
+   "body": "medio",
+   "notes": [
+    "mel",
+    "baunilha",
+    "canela",
+    "frutas-secas"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Glenmorangie",
+   "name": "The Original 10 anos",
+   "type": "Single Malt Highland",
+   "body": "leve",
+   "notes": [
+    "citrico",
+    "baunilha",
+    "floral",
+    "maca-pera"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Glenmorangie",
+   "name": "Lasanta 12 anos",
+   "type": "Single Malt Sherry Cask",
+   "body": "encorpado",
+   "notes": [
+    "frutas-secas",
+    "chocolate",
+    "caramelo",
+    "especiarias"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "GlenDronach",
+   "name": "12 anos",
+   "type": "Single Malt Sherry Cask",
+   "body": "encorpado",
+   "notes": [
+    "frutas-secas",
+    "chocolate",
+    "especiarias",
+    "nozes"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Aberlour",
+   "name": "A'bunadh",
+   "type": "Single Malt Sherry Cask",
+   "body": "encorpado",
+   "notes": [
+    "frutas-secas",
+    "chocolate",
+    "casca-laranja",
+    "especiarias"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "The Dalmore",
+   "name": "12 anos",
+   "type": "Single Malt Highland",
+   "body": "encorpado",
+   "notes": [
+    "casca-laranja",
+    "chocolate",
+    "frutas-secas",
+    "cafe"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Highland Park",
+   "name": "12 anos Viking Honour",
+   "type": "Single Malt Island",
+   "body": "medio",
+   "notes": [
+    "mel",
+    "defumado",
+    "frutas-secas",
+    "malte"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Talisker",
+   "name": "10 anos",
+   "type": "Single Malt Island",
+   "body": "encorpado",
+   "notes": [
+    "defumado",
+    "pimenta",
+    "salino",
+    "frutas-secas"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Oban",
+   "name": "14 anos",
+   "type": "Single Malt Highland",
+   "body": "medio",
+   "notes": [
+    "mel",
+    "frutas-secas",
+    "salino",
+    "defumado"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Lagavulin",
+   "name": "16 anos",
+   "type": "Single Malt Islay",
+   "body": "encorpado",
+   "notes": [
+    "turfa",
+    "frutas-secas",
+    "salino",
+    "carvalho"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Laphroaig",
+   "name": "10 anos",
+   "type": "Single Malt Islay",
+   "body": "encorpado",
+   "notes": [
+    "turfa",
+    "defumado",
+    "salino",
+    "baunilha"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Ardbeg",
+   "name": "10 anos",
+   "type": "Single Malt Islay",
+   "body": "encorpado",
+   "notes": [
+    "turfa",
+    "citrico",
+    "defumado",
+    "baunilha"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Johnnie Walker",
+   "name": "Black Label 12 anos",
+   "type": "Blended Scotch",
+   "body": "medio",
+   "notes": [
+    "defumado",
+    "baunilha",
+    "frutas-secas",
+    "malte"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Johnnie Walker",
+   "name": "Double Black",
+   "type": "Blended Scotch",
+   "body": "encorpado",
+   "notes": [
+    "defumado",
+    "frutas-secas",
+    "especiarias",
+    "carvalho"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Johnnie Walker",
+   "name": "Gold Label Reserve",
+   "type": "Blended Scotch",
+   "body": "leve",
+   "notes": [
+    "mel",
+    "creme",
+    "frutas-tropicais"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Johnnie Walker",
+   "name": "Blue Label",
+   "type": "Blended Scotch",
+   "body": "medio",
+   "notes": [
+    "mel",
+    "frutas-secas",
+    "defumado",
+    "chocolate"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Chivas Regal",
+   "name": "12 anos",
+   "type": "Blended Scotch",
+   "body": "leve",
+   "notes": [
+    "mel",
+    "maca-pera",
+    "baunilha",
+    "avela"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Chivas Regal",
+   "name": "18 anos",
+   "type": "Blended Scotch",
+   "body": "medio",
+   "notes": [
+    "frutas-secas",
+    "chocolate",
+    "toffee",
+    "floral"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Jameson",
+   "name": "Irish Whiskey",
+   "type": "Irish",
+   "body": "leve",
+   "notes": [
+    "baunilha",
+    "nozes",
+    "madeira",
+    "floral"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Redbreast",
+   "name": "12 anos",
+   "type": "Irish",
+   "body": "medio",
+   "notes": [
+    "frutas-secas",
+    "especiarias",
+    "nozes",
+    "toffee"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Hibiki",
+   "name": "Japanese Harmony",
+   "type": "Japonês",
+   "body": "leve",
+   "notes": [
+    "mel",
+    "casca-laranja",
+    "floral",
+    "chocolate"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Yamazaki",
+   "name": "12 anos",
+   "type": "Japonês",
+   "body": "medio",
+   "notes": [
+    "frutas-tropicais",
+    "frutas-vermelhas",
+    "manteiga",
+    "carvalho"
+   ]
+  },
+  {
+   "category": "whisky",
+   "brand": "Nikka",
+   "name": "From the Barrel",
+   "type": "Japonês",
+   "body": "encorpado",
+   "notes": [
+    "especiarias",
+    "baunilha",
+    "frutas-secas",
+    "carvalho"
+   ]
+  },
+  {
+   "category": "vinho",
+   "brand": "Graham's",
+   "name": "10 anos Tawny",
+   "type": "Porto Tawny",
+   "body": "encorpado",
+   "notes": [
+    "nozes",
+    "caramelo",
+    "frutas-secas",
+    "toffee"
+   ]
+  },
+  {
+   "category": "vinho",
+   "brand": "Graham's",
+   "name": "20 anos Tawny",
+   "type": "Porto Tawny",
+   "body": "encorpado",
+   "notes": [
+    "nozes",
+    "frutas-secas",
+    "toffee",
+    "casca-laranja"
+   ]
+  },
+  {
+   "category": "vinho",
+   "brand": "Taylor's",
+   "name": "10 anos Tawny",
+   "type": "Porto Tawny",
+   "body": "encorpado",
+   "notes": [
+    "nozes",
+    "frutas-secas",
+    "mel",
+    "caramelo"
+   ]
+  },
+  {
+   "category": "vinho",
+   "brand": "Taylor's",
+   "name": "Late Bottled Vintage",
+   "type": "Porto Ruby/LBV",
+   "body": "encorpado",
+   "notes": [
+    "frutas-escuras",
+    "chocolate",
+    "especiarias",
+    "frutas-vermelhas"
+   ]
+  },
+  {
+   "category": "vinho",
+   "brand": "Sandeman",
+   "name": "Porto Ruby",
+   "type": "Porto Ruby/LBV",
+   "body": "medio",
+   "notes": [
+    "frutas-vermelhas",
+    "frutas-escuras",
+    "chocolate"
+   ]
+  },
+  {
+   "category": "vinho",
+   "brand": "Blandy's",
+   "name": "Malmsey 10 anos",
+   "type": "Madeira",
+   "body": "encorpado",
+   "notes": [
+    "caramelo",
+    "frutas-secas",
+    "casca-laranja",
+    "cafe"
+   ]
+  },
+  {
+   "category": "vinho",
+   "brand": "Lustau",
+   "name": "Pedro Ximénez San Emilio",
+   "type": "Jerez Pedro Ximénez",
+   "body": "encorpado",
+   "notes": [
+    "frutas-secas",
+    "melaco",
+    "cafe",
+    "chocolate"
+   ]
+  },
+  {
+   "category": "vinho",
+   "brand": "González Byass",
+   "name": "Matusalem Oloroso Dulce",
+   "type": "Jerez Oloroso",
+   "body": "encorpado",
+   "notes": [
+    "frutas-secas",
+    "nozes",
+    "caramelo",
+    "madeira"
+   ]
+  },
+  {
+   "category": "vinho",
+   "brand": "Moët & Chandon",
+   "name": "Brut Impérial",
+   "type": "Champagne",
+   "body": "medio",
+   "notes": [
+    "maca-pera",
+    "citrico",
+    "torrado",
+    "amendoa"
+   ]
+  },
+  {
+   "category": "vinho",
+   "brand": "Veuve Clicquot",
+   "name": "Brut Yellow Label",
+   "type": "Champagne",
+   "body": "medio",
+   "notes": [
+    "maca-pera",
+    "torrado",
+    "citrico",
+    "baunilha"
+   ]
+  },
+  {
+   "category": "vinho",
+   "brand": "Chandon",
+   "name": "Brut Réserve (Brasil)",
+   "type": "Espumante",
+   "body": "leve",
+   "notes": [
+    "citrico",
+    "maca-pera",
+    "torrado"
+   ]
+  },
+  {
+   "category": "vinho",
+   "brand": "Catena",
+   "name": "Malbec",
+   "type": "Tinto encorpado",
+   "body": "encorpado",
+   "notes": [
+    "frutas-escuras",
+    "floral",
+    "baunilha",
+    "especiarias"
+   ]
+  },
+  {
+   "category": "vinho",
+   "brand": "Casillero del Diablo",
+   "name": "Cabernet Sauvignon",
+   "type": "Tinto médio",
+   "body": "medio",
+   "notes": [
+    "frutas-escuras",
+    "carvalho",
+    "tanino",
+    "especiarias"
+   ]
+  },
+  {
+   "category": "destilado",
+   "brand": "Ron Zacapa",
+   "name": "23 Solera",
+   "type": "Rum envelhecido",
+   "body": "encorpado",
+   "notes": [
+    "frutas-secas",
+    "toffee",
+    "baunilha",
+    "carvalho"
+   ]
+  },
+  {
+   "category": "destilado",
+   "brand": "Diplomático",
+   "name": "Reserva Exclusiva",
+   "type": "Rum envelhecido",
+   "body": "encorpado",
+   "notes": [
+    "caramelo",
+    "casca-laranja",
+    "frutas-secas",
+    "baunilha"
+   ]
+  },
+  {
+   "category": "destilado",
+   "brand": "Havana Club",
+   "name": "Añejo 7 Años",
+   "type": "Rum envelhecido",
+   "body": "medio",
+   "notes": [
+    "chocolate",
+    "baunilha",
+    "tabaco",
+    "frutas-tropicais"
+   ]
+  },
+  {
+   "category": "destilado",
+   "brand": "Flor de Caña",
+   "name": "12 anos",
+   "type": "Rum envelhecido",
+   "body": "medio",
+   "notes": [
+    "baunilha",
+    "caramelo",
+    "chocolate",
+    "nozes"
+   ]
+  },
+  {
+   "category": "destilado",
+   "brand": "Appleton Estate",
+   "name": "12 anos Rare Casks",
+   "type": "Rum envelhecido",
+   "body": "medio",
+   "notes": [
+    "frutas-secas",
+    "casca-laranja",
+    "baunilha",
+    "melaco"
+   ]
+  },
+  {
+   "category": "destilado",
+   "brand": "Bacardí",
+   "name": "Reserva Ocho",
+   "type": "Rum envelhecido",
+   "body": "medio",
+   "notes": [
+    "frutas-secas",
+    "baunilha",
+    "canela",
+    "carvalho"
+   ]
+  },
+  {
+   "category": "destilado",
+   "brand": "Plantation",
+   "name": "XO 20th Anniversary",
+   "type": "Rum envelhecido",
+   "body": "encorpado",
+   "notes": [
+    "frutas-tropicais",
+    "baunilha",
+    "chocolate",
+    "caramelo"
+   ]
+  },
+  {
+   "category": "destilado",
+   "brand": "Hennessy",
+   "name": "V.S",
+   "type": "Conhaque",
+   "body": "medio",
+   "notes": [
+    "carvalho",
+    "baunilha",
+    "amendoa",
+    "frutas-secas"
+   ]
+  },
+  {
+   "category": "destilado",
+   "brand": "Hennessy",
+   "name": "X.O",
+   "type": "Conhaque",
+   "body": "encorpado",
+   "notes": [
+    "frutas-secas",
+    "chocolate",
+    "canela",
+    "pimenta"
+   ]
+  },
+  {
+   "category": "destilado",
+   "brand": "Rémy Martin",
+   "name": "VSOP",
+   "type": "Conhaque",
+   "body": "medio",
+   "notes": [
+    "baunilha",
+    "frutas-secas",
+    "floral",
+    "carvalho"
+   ]
+  },
+  {
+   "category": "destilado",
+   "brand": "Rémy Martin",
+   "name": "XO",
+   "type": "Conhaque",
+   "body": "encorpado",
+   "notes": [
+    "frutas-secas",
+    "canela",
+    "avela",
+    "floral"
+   ]
+  },
+  {
+   "category": "destilado",
+   "brand": "Don Julio",
+   "name": "1942",
+   "type": "Tequila Añejo",
+   "body": "medio",
+   "notes": [
+    "caramelo",
+    "chocolate",
+    "baunilha",
+    "carvalho"
+   ]
+  },
+  {
+   "category": "destilado",
+   "brand": "Don Julio",
+   "name": "Añejo",
+   "type": "Tequila Añejo",
+   "body": "medio",
+   "notes": [
+    "mel",
+    "caramelo",
+    "baunilha",
+    "carvalho"
+   ]
+  },
+  {
+   "category": "destilado",
+   "brand": "Patrón",
+   "name": "Añejo",
+   "type": "Tequila Añejo",
+   "body": "medio",
+   "notes": [
+    "baunilha",
+    "mel",
+    "carvalho",
+    "frutas-secas"
+   ]
+  },
+  {
+   "category": "destilado",
+   "brand": "Del Maguey",
+   "name": "Vida",
+   "type": "Mezcal",
+   "body": "encorpado",
+   "notes": [
+    "defumado",
+    "frutas-tropicais",
+    "herbal"
+   ]
+  },
+  {
+   "category": "destilado",
+   "brand": "Seleta",
+   "name": "Ouro (umburana)",
+   "type": "Cachaça envelhecida",
+   "body": "medio",
+   "notes": [
+    "canela",
+    "baunilha",
+    "madeira",
+    "mel"
+   ]
+  },
+  {
+   "category": "destilado",
+   "brand": "Kahlúa",
+   "name": "Licor de café",
+   "type": "Licor de café",
+   "body": "medio",
+   "notes": [
+    "cafe",
+    "baunilha",
+    "caramelo"
+   ]
+  },
+  {
+   "category": "destilado",
+   "brand": "Tanqueray",
+   "name": "London Dry",
+   "type": "Gin",
+   "body": "leve",
+   "notes": [
+    "herbal",
+    "citrico",
+    "especiarias"
+   ]
+  },
+  {
+   "category": "destilado",
+   "brand": "Hendrick's",
+   "name": "Gin",
+   "type": "Gin",
+   "body": "leve",
+   "notes": [
+    "floral",
+    "herbal",
+    "citrico"
+   ]
+  },
+  {
+   "category": "cafe",
+   "brand": "Nespresso",
+   "name": "Arpeggio",
+   "type": "Expresso",
+   "body": "encorpado",
+   "notes": [
+    "cacau",
+    "torrado",
+    "madeira"
+   ]
+  },
+  {
+   "category": "cafe",
+   "brand": "Nespresso",
+   "name": "Ristretto",
+   "type": "Expresso",
+   "body": "encorpado",
+   "notes": [
+    "expresso",
+    "cacau",
+    "torrado"
+   ]
+  },
+  {
+   "category": "cafe",
+   "brand": "Orfeu",
+   "name": "Clássico",
+   "type": "Coado (torra média)",
+   "body": "medio",
+   "notes": [
+    "chocolate",
+    "caramelo",
+    "nozes"
+   ]
+  },
+  {
+   "category": "cafe",
+   "brand": "illy",
+   "name": "Clássico",
+   "type": "Expresso",
+   "body": "medio",
+   "notes": [
+    "caramelo",
+    "chocolate",
+    "floral"
+   ]
+  },
+  {
+   "category": "cafe",
+   "brand": "Lavazza",
+   "name": "Qualità Oro",
+   "type": "Coado (torra média)",
+   "body": "medio",
+   "notes": [
+    "floral",
+    "mel",
+    "frutas-secas"
+   ]
+  }
+ ]
+}

@@ -2,8 +2,9 @@ import flavors from '../knowledge/flavors.json'
 import rules from '../knowledge/pairing-rules.json'
 import drinkTypes from '../knowledge/drink-types.json'
 import cigarsDb from '../knowledge/cigars-db.json'
+import drinksDb from '../knowledge/drinks-db.json'
 
-export { flavors, rules, drinkTypes, cigarsDb }
+export { flavors, rules, drinkTypes, cigarsDb, drinksDb }
 
 export const noteLabel = (id) => flavors.notes[id]?.label ?? id
 export const STRENGTHS = { suave: 'Suave', medio: 'Médio', pleno: 'Pleno' }

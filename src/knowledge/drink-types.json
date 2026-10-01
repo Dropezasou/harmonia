@@ -1,57 +1,361 @@
 {
   "_doc": "Categorias e tipos de bebida, com notas e corpo típicos usados para pré-preencher o cadastro. Edite/adicione tipos à vontade.",
   "categories": {
-    "whisky":    { "label": "Whiskies / Bourbons", "icon": "🥃" },
-    "vinho":     { "label": "Vinhos",              "icon": "🍷" },
-    "destilado": { "label": "Destilados",          "icon": "🍸" },
-    "cafe":      { "label": "Cafés especiais",     "icon": "☕" }
+    "whisky": {
+      "label": "Whiskies / Bourbons",
+      "icon": "🥃"
+    },
+    "vinho": {
+      "label": "Vinhos",
+      "icon": "🍷"
+    },
+    "destilado": {
+      "label": "Destilados",
+      "icon": "🍸"
+    },
+    "cafe": {
+      "label": "Cafés especiais",
+      "icon": "☕"
+    }
   },
   "types": {
     "whisky": {
-      "Bourbon":                { "body": "encorpado", "notes": ["caramelo", "baunilha", "carvalho", "canela"] },
-      "Tennessee":              { "body": "medio",     "notes": ["caramelo", "baunilha", "madeira", "frutas-tropicais"] },
-      "Rye":                    { "body": "medio",     "notes": ["pimenta", "especiarias", "carvalho", "mel"] },
-      "Single Malt Speyside":   { "body": "medio",     "notes": ["mel", "maca-pera", "baunilha", "malte"] },
-      "Single Malt Sherry Cask":{ "body": "encorpado", "notes": ["frutas-secas", "chocolate", "canela", "toffee"] },
-      "Single Malt Islay":      { "body": "encorpado", "notes": ["turfa", "defumado", "salino", "malte"] },
-      "Single Malt Highland":   { "body": "medio",     "notes": ["mel", "malte", "carvalho", "frutas-secas"] },
-      "Blended Scotch":         { "body": "leve",      "notes": ["malte", "mel", "baunilha"] },
-      "Irish":                  { "body": "leve",      "notes": ["mel", "maca-pera", "baunilha", "creme"] },
-      "Japonês":                { "body": "medio",     "notes": ["mel", "frutas-tropicais", "carvalho", "floral"] }
+      "Bourbon": {
+        "body": "encorpado",
+        "notes": [
+          "caramelo",
+          "baunilha",
+          "carvalho",
+          "canela"
+        ]
+      },
+      "Tennessee": {
+        "body": "medio",
+        "notes": [
+          "caramelo",
+          "baunilha",
+          "madeira",
+          "frutas-tropicais"
+        ]
+      },
+      "Rye": {
+        "body": "medio",
+        "notes": [
+          "pimenta",
+          "especiarias",
+          "carvalho",
+          "mel"
+        ]
+      },
+      "Single Malt Speyside": {
+        "body": "medio",
+        "notes": [
+          "mel",
+          "maca-pera",
+          "baunilha",
+          "malte"
+        ]
+      },
+      "Single Malt Sherry Cask": {
+        "body": "encorpado",
+        "notes": [
+          "frutas-secas",
+          "chocolate",
+          "canela",
+          "toffee"
+        ]
+      },
+      "Single Malt Islay": {
+        "body": "encorpado",
+        "notes": [
+          "turfa",
+          "defumado",
+          "salino",
+          "malte"
+        ]
+      },
+      "Single Malt Island": {
+        "body": "encorpado",
+        "notes": [
+          "defumado",
+          "mel",
+          "salino",
+          "pimenta"
+        ]
+      },
+      "Single Malt Highland": {
+        "body": "medio",
+        "notes": [
+          "mel",
+          "malte",
+          "carvalho",
+          "frutas-secas"
+        ]
+      },
+      "Blended Scotch": {
+        "body": "leve",
+        "notes": [
+          "malte",
+          "mel",
+          "baunilha"
+        ]
+      },
+      "Irish": {
+        "body": "leve",
+        "notes": [
+          "mel",
+          "maca-pera",
+          "baunilha",
+          "creme"
+        ]
+      },
+      "Japonês": {
+        "body": "medio",
+        "notes": [
+          "mel",
+          "frutas-tropicais",
+          "carvalho",
+          "floral"
+        ]
+      }
     },
     "vinho": {
-      "Porto Tawny":            { "body": "encorpado", "notes": ["nozes", "caramelo", "frutas-secas", "toffee"] },
-      "Porto Ruby/LBV":         { "body": "encorpado", "notes": ["frutas-escuras", "chocolate", "frutas-vermelhas"] },
-      "Madeira":                { "body": "encorpado", "notes": ["caramelo", "nozes", "casca-laranja", "frutas-secas"] },
-      "Jerez Oloroso":          { "body": "encorpado", "notes": ["nozes", "frutas-secas", "madeira"] },
-      "Jerez Pedro Ximénez":    { "body": "encorpado", "notes": ["frutas-secas", "melaco", "cafe"] },
-      "Tinto encorpado":        { "body": "encorpado", "notes": ["frutas-escuras", "tanino", "carvalho", "especiarias"] },
-      "Tinto médio":            { "body": "medio",     "notes": ["frutas-vermelhas", "terra", "especiarias"] },
-      "Vinho branco":           { "body": "leve",      "notes": ["citrico", "maca-pera", "floral"] },
-      "Espumante":              { "body": "leve",      "notes": ["citrico", "maca-pera", "torrado"] },
-      "Champagne":              { "body": "medio",     "notes": ["citrico", "torrado", "amendoa", "manteiga"] },
-      "Sauternes / colheita tardia": { "body": "encorpado", "notes": ["mel", "frutas-tropicais", "casca-laranja"] }
+      "Porto Tawny": {
+        "body": "encorpado",
+        "notes": [
+          "nozes",
+          "caramelo",
+          "frutas-secas",
+          "toffee"
+        ]
+      },
+      "Porto Ruby/LBV": {
+        "body": "encorpado",
+        "notes": [
+          "frutas-escuras",
+          "chocolate",
+          "frutas-vermelhas"
+        ]
+      },
+      "Madeira": {
+        "body": "encorpado",
+        "notes": [
+          "caramelo",
+          "nozes",
+          "casca-laranja",
+          "frutas-secas"
+        ]
+      },
+      "Jerez Oloroso": {
+        "body": "encorpado",
+        "notes": [
+          "nozes",
+          "frutas-secas",
+          "madeira"
+        ]
+      },
+      "Jerez Pedro Ximénez": {
+        "body": "encorpado",
+        "notes": [
+          "frutas-secas",
+          "melaco",
+          "cafe"
+        ]
+      },
+      "Tinto encorpado": {
+        "body": "encorpado",
+        "notes": [
+          "frutas-escuras",
+          "tanino",
+          "carvalho",
+          "especiarias"
+        ]
+      },
+      "Tinto médio": {
+        "body": "medio",
+        "notes": [
+          "frutas-vermelhas",
+          "terra",
+          "especiarias"
+        ]
+      },
+      "Vinho branco": {
+        "body": "leve",
+        "notes": [
+          "citrico",
+          "maca-pera",
+          "floral"
+        ]
+      },
+      "Espumante": {
+        "body": "leve",
+        "notes": [
+          "citrico",
+          "maca-pera",
+          "torrado"
+        ]
+      },
+      "Champagne": {
+        "body": "medio",
+        "notes": [
+          "citrico",
+          "torrado",
+          "amendoa",
+          "manteiga"
+        ]
+      },
+      "Sauternes / colheita tardia": {
+        "body": "encorpado",
+        "notes": [
+          "mel",
+          "frutas-tropicais",
+          "casca-laranja"
+        ]
+      }
     },
     "destilado": {
-      "Rum envelhecido":        { "body": "encorpado", "notes": ["melaco", "baunilha", "frutas-secas", "carvalho"] },
-      "Rum agrícola":           { "body": "medio",     "notes": ["herbal", "frutas-tropicais", "pimenta-branca"] },
-      "Cachaça envelhecida":    { "body": "medio",     "notes": ["madeira", "baunilha", "canela", "frutas-secas"] },
-      "Cachaça branca":         { "body": "leve",      "notes": ["herbal", "frutas-tropicais"] },
-      "Conhaque":               { "body": "encorpado", "notes": ["frutas-secas", "baunilha", "carvalho", "floral"] },
-      "Armagnac":               { "body": "encorpado", "notes": ["frutas-escuras", "toffee", "carvalho"] },
-      "Calvados":               { "body": "medio",     "notes": ["maca-pera", "baunilha", "carvalho"] },
-      "Tequila Añejo":          { "body": "medio",     "notes": ["caramelo", "baunilha", "pimenta-branca", "carvalho"] },
-      "Mezcal":                 { "body": "encorpado", "notes": ["defumado", "terra", "citrico"] },
-      "Gin":                    { "body": "leve",      "notes": ["herbal", "citrico", "especiarias"] },
-      "Licor de café":          { "body": "medio",     "notes": ["cafe", "baunilha", "caramelo"] }
+      "Rum envelhecido": {
+        "body": "encorpado",
+        "notes": [
+          "melaco",
+          "baunilha",
+          "frutas-secas",
+          "carvalho"
+        ]
+      },
+      "Rum agrícola": {
+        "body": "medio",
+        "notes": [
+          "herbal",
+          "frutas-tropicais",
+          "pimenta-branca"
+        ]
+      },
+      "Cachaça envelhecida": {
+        "body": "medio",
+        "notes": [
+          "madeira",
+          "baunilha",
+          "canela",
+          "frutas-secas"
+        ]
+      },
+      "Cachaça branca": {
+        "body": "leve",
+        "notes": [
+          "herbal",
+          "frutas-tropicais"
+        ]
+      },
+      "Conhaque": {
+        "body": "encorpado",
+        "notes": [
+          "frutas-secas",
+          "baunilha",
+          "carvalho",
+          "floral"
+        ]
+      },
+      "Armagnac": {
+        "body": "encorpado",
+        "notes": [
+          "frutas-escuras",
+          "toffee",
+          "carvalho"
+        ]
+      },
+      "Calvados": {
+        "body": "medio",
+        "notes": [
+          "maca-pera",
+          "baunilha",
+          "carvalho"
+        ]
+      },
+      "Tequila Añejo": {
+        "body": "medio",
+        "notes": [
+          "caramelo",
+          "baunilha",
+          "pimenta-branca",
+          "carvalho"
+        ]
+      },
+      "Mezcal": {
+        "body": "encorpado",
+        "notes": [
+          "defumado",
+          "terra",
+          "citrico"
+        ]
+      },
+      "Gin": {
+        "body": "leve",
+        "notes": [
+          "herbal",
+          "citrico",
+          "especiarias"
+        ]
+      },
+      "Licor de café": {
+        "body": "medio",
+        "notes": [
+          "cafe",
+          "baunilha",
+          "caramelo"
+        ]
+      }
     },
     "cafe": {
-      "Expresso":               { "body": "encorpado", "notes": ["expresso", "chocolate", "caramelo"] },
-      "Coado (torra média)":    { "body": "medio",     "notes": ["cafe", "chocolate", "nozes"] },
-      "Coado (torra clara)":    { "body": "leve",      "notes": ["cafe", "frutas-vermelhas", "citrico", "floral"] },
-      "Cappuccino / com leite": { "body": "medio",     "notes": ["cafe", "creme", "caramelo"] },
-      "Cold brew":              { "body": "medio",     "notes": ["chocolate", "caramelo", "cafe"] },
-      "Café natural (Cerrado)": { "body": "medio",     "notes": ["chocolate", "frutas-secas", "caramelo"] }
+      "Expresso": {
+        "body": "encorpado",
+        "notes": [
+          "expresso",
+          "chocolate",
+          "caramelo"
+        ]
+      },
+      "Coado (torra média)": {
+        "body": "medio",
+        "notes": [
+          "cafe",
+          "chocolate",
+          "nozes"
+        ]
+      },
+      "Coado (torra clara)": {
+        "body": "leve",
+        "notes": [
+          "cafe",
+          "frutas-vermelhas",
+          "citrico",
+          "floral"
+        ]
+      },
+      "Cappuccino / com leite": {
+        "body": "medio",
+        "notes": [
+          "cafe",
+          "creme",
+          "caramelo"
+        ]
+      },
+      "Cold brew": {
+        "body": "medio",
+        "notes": [
+          "chocolate",
+          "caramelo",
+          "cafe"
+        ]
+      },
+      "Café natural (Cerrado)": {
+        "body": "medio",
+        "notes": [
+          "chocolate",
+          "frutas-secas",
+          "caramelo"
+        ]
+      }
     }
   }
 }

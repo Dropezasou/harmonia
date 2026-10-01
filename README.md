@@ -5,7 +5,7 @@ App pessoal: umidor, adega, harmonização baseada em regras e histórico com no
 - **Stack:** Vite + React + Tailwind v4, `vite-plugin-pwa` (service worker com precache), IndexedDB (`idb`).
 - **Dados:** ficam só no aparelho (IndexedDB). Use *Histórico → Exportar backup* de vez em quando.
 - **Base de conhecimento editável:** `src/knowledge/` (veja `PRINCIPIOS.md`).
-- **Auto-preenchimento de charutos:** busca na base local `cigars-db.json` (offline). Sites de review não têm API pública e bloqueiam acesso direto do navegador, então para charutos fora da base o app oferece links de busca (Halfwheel, Cigar Aficionado, Google) e você preenche manualmente.
+- **Auto-preenchimento:** charutos em `cigars-db.json` e bebidas em `drinks-db.json` (offline). Sites de review não têm API pública e bloqueiam acesso direto do navegador, então para itens fora da base o app oferece links de busca (Halfwheel, Cigar Aficionado, Distiller, Vivino, Google) e você preenche manualmente.
 
 ## Comandos
 ```
