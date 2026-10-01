@@ -1,0 +1,23 @@
+name: Coleta Cigar Aficionado
+
+on:
+  workflow_dispatch:
+    inputs:
+      year: { description: 'Ano do Top 25', default: '2024' }
+      limit: { description: 'Quantidade de páginas', default: '20' }
+  pull_request:
+    paths: ['scripts/scrape/**', '.github/workflows/ca-scrape.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node scripts/scrape/ca-scrape.mjs --year ${{ inputs.year || '2024' }} --limit ${{ inputs.limit || '20' }} --out ca.json
+      - uses: actions/upload-artifact@v4
+        with: { name: ca-data, path: ca.json }
