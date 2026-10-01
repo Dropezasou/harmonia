@@ -13,5 +13,6 @@ O motor (`src/lib/engine.js`) só aplica o que está nos JSONs desta pasta. A no
 - Nova afinidade: em `pairing-rules.json > flavor.affinity`, `a` = família da **bebida**, `b` = do **charuto**.
 - Novo tipo de bebida com notas típicas: `drink-types.json`.
 - Novo charuto para o auto-preenchimento: `cigars-db.json`.
+- Nova bebida (marca/rótulo) para o auto-preenchimento: `drinks-db.json`.
 
 Depois rode `npm test` (valida as referências cruzadas) e `npm run build`.

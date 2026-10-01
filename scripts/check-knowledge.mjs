@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs'
 import { createServer } from 'vite'
 
 const load = (f) => JSON.parse(readFileSync(new URL(`../src/knowledge/${f}`, import.meta.url)))
-const flavors = load('flavors.json'), rules = load('pairing-rules.json'), types = load('drink-types.json'), db = load('cigars-db.json')
+const flavors = load('flavors.json'), rules = load('pairing-rules.json'), types = load('drink-types.json'), db = load('cigars-db.json'), drinksDb = load('drinks-db.json')
 const errors = []
 const checkNotes = (notes, where) => notes.forEach((n) => flavors.notes[n] || errors.push(`${where}: nota desconhecida "${n}"`))
 
@@ -11,6 +11,12 @@ for (const [id, n] of Object.entries(flavors.notes)) flavors.families[n.family] 
 for (const a of rules.flavor.affinity) for (const f of [a.a, a.b]) flavors.families[f] || errors.push(`affinity ${a.a}/${a.b}: família "${f}" inexistente`)
 for (const [cat, t] of Object.entries(types.types)) for (const [name, v] of Object.entries(t)) checkNotes(v.notes, `drink-types ${cat}/${name}`)
 for (const c of db.cigars) checkNotes(c.notes, `cigars-db ${c.brand} ${c.name}`)
+for (const d of drinksDb.drinks) {
+  checkNotes(d.notes, `drinks-db ${d.brand} ${d.name}`)
+  types.categories[d.category] || errors.push(`drinks-db ${d.brand} ${d.name}: categoria "${d.category}" inexistente`)
+  types.types[d.category]?.[d.type] || errors.push(`drinks-db ${d.brand} ${d.name}: tipo "${d.type}" não está em drink-types.json`)
+  ;['leve', 'medio', 'encorpado'].includes(d.body) || errors.push(`drinks-db ${d.brand} ${d.name}: corpo "${d.body}" inválido`)
+}
 
 if (errors.length) { console.error(errors.join('\n')); process.exit(1) }
 console.log('Base de conhecimento OK')

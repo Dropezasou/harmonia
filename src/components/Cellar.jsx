@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { BODIES, drinkTypes } from '../lib/knowledge'
+import { searchDrinks, externalLinks } from '../lib/lookup'
 import { drinkTitle } from '../lib/store'
 import NotePicker, { NoteList } from './NotePicker'
 import { Button, Chip, Empty, Field, Input, Segmented, Sheet, inputCls } from './ui'
@@ -38,8 +39,9 @@ export default function Cellar({ data }) {
 
 function DrinkForm({ item, onClose, data }) {
   const [f, setF] = useState(item)
+  const [q, setQ] = useState('')
   const [lastItem, setLastItem] = useState(item)
-  if (item !== lastItem) { setLastItem(item); setF(item) }
+  if (item !== lastItem) { setLastItem(item); setF(item); setQ('') }
   if (!item || !f) return null
   const set = (k) => (e) => setF({ ...f, [k]: e?.target ? e.target.value : e })
   const types = drinkTypes.types[f.category] || {}
@@ -49,9 +51,31 @@ function DrinkForm({ item, onClose, data }) {
     setF({ ...f, type: t, ...(preset && !f.notes.length ? { notes: [...preset.notes], body: preset.body } : {}) })
   }
   const submit = async () => { await data.save('drinks', { ...f, qty: f.qty ? 1 : 0 }); onClose() }
+  const results = q.length > 2 ? searchDrinks(q) : []
+  const apply = (d) => { setF({ ...f, ...d, notes: [...d.notes] }); setQ('') }
 
   return (
     <Sheet open title={f.id ? 'Editar bebida' : 'Nova bebida'} onClose={onClose}>
+      {!f.id && (
+        <div className="rounded-lg border border-line p-3">
+          <Field label="Buscar ficha da bebida">
+            <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="ex.: Macallan 12, Zacapa, Graham's" />
+          </Field>
+          {results.map((d, i) => (
+            <button key={i} onClick={() => apply(d)} className="mt-2 block w-full rounded-lg bg-bg p-2 text-left">
+              <span className="font-medium">{CATS[d.category]?.icon} {drinkTitle(d)}</span>
+              <span className="block text-xs text-ink-3">{d.type} · corpo {BODIES[d.body].toLowerCase()}</span>
+            </button>
+          ))}
+          {q.length > 2 && (
+            <div className="mt-2 text-xs text-ink-3">
+              {!results.length && 'Não encontrada na base local. '}Pesquisar em:{' '}
+              {externalLinks(q, 'drink').map((l) => <a key={l.label} href={l.url} target="_blank" rel="noreferrer" className="mr-2 text-gold underline">{l.label}</a>)}
+              <p className="mt-1">Ou escolha o tipo abaixo para usar as notas típicas.</p>
+            </div>
+          )}
+        </div>
+      )}
       <Field group label="Categoria">
         <Segmented options={Object.fromEntries(Object.entries(drinkTypes.categories).map(([k, c]) => [k, c.icon + ' ' + c.label.split(' ')[0]]))}
           value={f.category} onChange={(c) => c && setF({ ...f, category: c, type: '' })} />
