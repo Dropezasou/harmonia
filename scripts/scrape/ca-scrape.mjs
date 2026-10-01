@@ -38,7 +38,7 @@ async function robotsAllows(path) {
 }
 
 function field(text, label) {
-  const m = text.match(new RegExp(`${label}\\s*:?\\s*\\n?\\s*([^\\n]+)`, 'i'))
+  const m = text.match(new RegExp(`(?:${label})\\s*:?\\s*\\n?\\s*([^\\n]+)`, 'i'))
   return m ? m[1].trim() : null
 }
 
