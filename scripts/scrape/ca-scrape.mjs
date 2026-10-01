@@ -1,6 +1,6 @@
 // Coleta fichas de charutos do Cigar Aficionado, página a página (uso pessoal, baixo volume).
 // Uso: node scripts/scrape/ca-scrape.mjs --year 2024 --limit 20 --out ca.json
-import { writeFileSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 
 const BASE = 'https://www.cigaraficionado.com'
 const UA = 'Mozilla/5.0 (compatible; harmonia-personal/1.0)'
@@ -37,35 +37,55 @@ async function robotsAllows(path) {
   } catch (e) { console.error('robots.txt indisponível:', e.message); return true }
 }
 
-function field(text, label) {
-  const m = text.match(new RegExp(`(?:${label})\\s*:?\\s*\\n?\\s*([^\\n]+)`, 'i'))
-  return m ? m[1].trim() : null
+const flavorMap = JSON.parse(readFileSync(new URL('./flavor-map.json', import.meta.url))).map
+const terms = Object.keys(flavorMap).sort((a, b) => b.length - a.length)
+const STRENGTH = { 'mild': 'suave', 'mild-medium': 'suave-medio', 'medium': 'medio', 'medium-full': 'medio-pleno', 'full': 'pleno' }
+
+// campos vêm um por linha: "Wrapper: Ecuador"
+const line = (text, label) => (text.match(new RegExp(`^${label}:\\s*(.+)$`, 'mi')) || [])[1]?.trim() || null
+
+function flavors(note) {
+  let rest = ` ${note.toLowerCase()} `
+  const found = []
+  for (const t of terms) {
+    const re = new RegExp(`[^a-z]${t.replace(/[-]/g, '\\-')}[^a-z]`, 'g')
+    if (re.test(rest)) { found.push(t); rest = rest.replace(re, ' | ') }
+  }
+  const notes = [...new Set(found.flatMap((t) => flavorMap[t]))]
+  return { terms: found, notes }
 }
 
 function parseCigar(html, url) {
   const text = toText(html)
-  const title = decode((html.match(/<h1[^>]*>([\s\S]*?)<\/h1>/i) || [])[1] || '').replace(/<[^>]+>/g, '').trim()
-  const ld = [...html.matchAll(/<script[^>]+application\/ld\+json[^>]*>([\s\S]*?)<\/script>/gi)].map((m) => { try { return JSON.parse(m[1]) } catch { return null } }).filter(Boolean)
-  const desc = (html.match(/<meta[^>]+(?:name|property)="(?:og:)?description"[^>]+content="([^"]*)"/i) || [])[1]
+  const name = (text.split('\n')[0] || '').replace(/\s*\|\s*Cigar Aficionado.*$/, '').trim()
+  // texto editorial: entre a linha Strength e o "Previous" da navegação
+  const after = text.split(/^Strength:.*$/m)[1] || ''
+  const note = after.split(/^Previous\s*$/m)[0].replace(/\s+/g, ' ').trim()
+  const dims = line(text, 'Dimensions')
+  const dm = dims?.match(/([\d\s/]+)"\s*by\s*(\d+)/)
+  const strengthCA = line(text, 'Strength')
+  const fl = flavors(note)
   return {
+    name,
     url,
-    title,
-    score: Number(field(text, 'Score|Rating')?.match(/\d{2,3}/)?.[0]) || null,
-    size: field(text, 'Size'),
-    length: field(text, 'Length'),
-    ring: field(text, 'Ring Gauge|Ring'),
-    wrapper: field(text, 'Wrapper'),
-    binder: field(text, 'Binder'),
-    filler: field(text, 'Filler'),
-    strength: field(text, 'Strength'),
-    country: field(text, 'Country'),
-    price: field(text, 'Price'),
-    tastingNote: field(text, 'Tasting Note') || decode(desc || ''),
-    jsonLd: ld.length ? ld : undefined,
-    // trecho bruto para calibrar o parser na primeira rodada
-    rawSample: text.slice(0, 2500)
+    rank: Number(line(text, 'Rank')) || null,
+    score: Number(line(text, 'Rating')) || null,
+    price: line(text, 'Price'),
+    madeBy: line(text, 'Made By'),
+    factory: line(text, 'Factory Location'),
+    vitola: dm ? `${dm[1].trim()}" x ${dm[2]}` : dims,
+    wrapper: line(text, 'Wrapper'),
+    binder: line(text, 'Binder'),
+    filler: line(text, 'Filler'),
+    strengthCA,
+    strength: STRENGTH[strengthCA?.toLowerCase()] || null,
+    flavorTerms: fl.terms,
+    notes: fl.notes,
+    noteExcerpt: note.slice(0, 600)
   }
 }
+
+if (args.test) { console.log(JSON.stringify(parseCigar(readFileSync(args.test, 'utf8'), 'test'), null, 1)); process.exit(0) }
 
 const listPath = `/top25/${year}`
 if (!(await robotsAllows(listPath)) || !(await robotsAllows('/top25cigar/'))) process.exit(1)
@@ -86,5 +106,5 @@ for (const [i, path] of links.entries()) {
 }
 writeFileSync(out, JSON.stringify({ source: BASE + listPath, fetchedAt: new Date().toISOString(), cigars: results }, null, 2))
 console.log('===CA-JSON-BEGIN===')
-console.log(JSON.stringify(results.map(({ rawSample, jsonLd, ...r }, i) => (i < 2 ? { ...r, rawSample, jsonLd } : r))))
+for (const r of results) console.log(JSON.stringify(r))
 console.log('===CA-JSON-END===')

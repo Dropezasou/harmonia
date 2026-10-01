@@ -1,0 +1,301 @@
+{
+ "_doc": "Descritor em inglês (como aparece no Cigar Aficionado) → nota(s) do app (src/knowledge/flavors.json). Termos mais longos têm prioridade sobre os curtos.",
+ "map": {
+  "cocoa powder": [
+   "cacau"
+  ],
+  "cocoa": [
+   "cacau"
+  ],
+  "cacao": [
+   "cacau"
+  ],
+  "dark chocolate": [
+   "chocolate"
+  ],
+  "malted chocolate": [
+   "chocolate",
+   "malte"
+  ],
+  "chocolate": [
+   "chocolate"
+  ],
+  "coffee bean": [
+   "cafe"
+  ],
+  "coffee": [
+   "cafe"
+  ],
+  "espresso": [
+   "expresso"
+  ],
+  "cappuccino": [
+   "cafe",
+   "creme"
+  ],
+  "latte": [
+   "cafe",
+   "creme"
+  ],
+  "mocha": [
+   "cafe",
+   "chocolate"
+  ],
+  "earthy": [
+   "terra"
+  ],
+  "earth": [
+   "terra"
+  ],
+  "leathery": [
+   "couro"
+  ],
+  "leather": [
+   "couro"
+  ],
+  "mushroom": [
+   "cogumelo"
+  ],
+  "hay": [
+   "feno"
+  ],
+  "hardwood": [
+   "madeira"
+  ],
+  "sweet wood": [
+   "madeira"
+  ],
+  "woody": [
+   "madeira"
+  ],
+  "wood": [
+   "madeira"
+  ],
+  "oak": [
+   "carvalho"
+  ],
+  "cedary": [
+   "cedro"
+  ],
+  "cedar": [
+   "cedro"
+  ],
+  "white pepper": [
+   "pimenta-branca"
+  ],
+  "red pepper": [
+   "pimenta"
+  ],
+  "black pepper": [
+   "pimenta"
+  ],
+  "peppery": [
+   "pimenta"
+  ],
+  "pepper": [
+   "pimenta"
+  ],
+  "baking spice": [
+   "especiarias"
+  ],
+  "spices": [
+   "especiarias"
+  ],
+  "spicy": [
+   "especiarias"
+  ],
+  "spice": [
+   "especiarias"
+  ],
+  "ginger": [
+   "especiarias"
+  ],
+  "licorice": [
+   "especiarias"
+  ],
+  "anise": [
+   "especiarias"
+  ],
+  "cinnamon": [
+   "canela"
+  ],
+  "nutmeg": [
+   "noz-moscada"
+  ],
+  "clove": [
+   "cravo"
+  ],
+  "honey": [
+   "mel"
+  ],
+  "caramel": [
+   "caramelo"
+  ],
+  "toffee": [
+   "toffee"
+  ],
+  "butterscotch": [
+   "toffee"
+  ],
+  "molasses": [
+   "melaco"
+  ],
+  "vanilla": [
+   "baunilha"
+  ],
+  "brown sugar": [
+   "acucar-mascavo"
+  ],
+  "nougat": [
+   "amendoa",
+   "mel"
+  ],
+  "marzipan": [
+   "amendoa"
+  ],
+  "almond paste": [
+   "amendoa"
+  ],
+  "graham cracker": [
+   "torrado"
+  ],
+  "biscotti": [
+   "torrado"
+  ],
+  "toasty": [
+   "torrado"
+  ],
+  "toast": [
+   "torrado"
+  ],
+  "bread": [
+   "torrado"
+  ],
+  "malt": [
+   "malte"
+  ],
+  "walnut": [
+   "nozes"
+  ],
+  "pecan": [
+   "nozes"
+  ],
+  "peanut": [
+   "nozes"
+  ],
+  "chestnut": [
+   "nozes"
+  ],
+  "nutty": [
+   "nozes"
+  ],
+  "nuts": [
+   "nozes"
+  ],
+  "almond": [
+   "amendoa"
+  ],
+  "hazelnut": [
+   "avela"
+  ],
+  "dried fruit": [
+   "frutas-secas"
+  ],
+  "candied fruit": [
+   "frutas-secas"
+  ],
+  "fruitcake": [
+   "frutas-secas"
+  ],
+  "raisin": [
+   "frutas-secas"
+  ],
+  "fig": [
+   "frutas-secas"
+  ],
+  "prune": [
+   "frutas-secas"
+  ],
+  "black cherry": [
+   "frutas-escuras"
+  ],
+  "cherry": [
+   "frutas-escuras"
+  ],
+  "plum": [
+   "frutas-escuras"
+  ],
+  "berry": [
+   "frutas-vermelhas"
+  ],
+  "berries": [
+   "frutas-vermelhas"
+  ],
+  "coconut": [
+   "frutas-tropicais"
+  ],
+  "apple": [
+   "maca-pera"
+  ],
+  "pear": [
+   "maca-pera"
+  ],
+  "orange peel": [
+   "casca-laranja"
+  ],
+  "orange": [
+   "casca-laranja"
+  ],
+  "citrus": [
+   "citrico"
+  ],
+  "lemon": [
+   "citrico"
+  ],
+  "creamy": [
+   "creme"
+  ],
+  "cream": [
+   "creme"
+  ],
+  "buttery": [
+   "manteiga"
+  ],
+  "butter": [
+   "manteiga"
+  ],
+  "floral": [
+   "floral"
+  ],
+  "flowers": [
+   "floral"
+  ],
+  "herbal": [
+   "herbal"
+  ],
+  "grassy": [
+   "herbal"
+  ],
+  "hickory": [
+   "defumado"
+  ],
+  "smoky": [
+   "defumado"
+  ],
+  "sea salt": [
+   "salino"
+  ],
+  "salted": [
+   "salino"
+  ],
+  "salty": [
+   "salino"
+  ],
+  "minerals": [
+   "salino"
+  ],
+  "mineral": [
+   "salino"
+  ]
+ }
+}
