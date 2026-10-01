@@ -1,0 +1,441 @@
+{
+  "_doc": "Base de princípios de harmonização consultada pelo motor (src/lib/engine.js). Altere pesos, afinidades e textos à vontade. Placeholders nos textos: {cigar}, {drink}, {cNote}, {dNote}, {cStrength}, {dBody}.",
+  "weights": {
+    "intensity": 0.35,
+    "flavor": 0.35,
+    "balance": 0.15,
+    "context": 0.15
+  },
+  "intensity": {
+    "_doc": "Princípio 1 — equilíbrio de corpo/intensidade: nenhum dos dois deve encobrir o outro. Escala 1-3. 'categoryOffset' corrige a intensidade percebida da categoria (destilados a 40%+ pesam mais que o corpo sugere).",
+    "cigarScale": {
+      "suave": 1,
+      "medio": 2,
+      "pleno": 3
+    },
+    "drinkScale": {
+      "leve": 1,
+      "medio": 2,
+      "encorpado": 3
+    },
+    "categoryOffset": {
+      "whisky": 0.25,
+      "destilado": 0.25,
+      "vinho": 0,
+      "cafe": 0
+    },
+    "scoreByDiff": [
+      {
+        "maxDiff": 0.3,
+        "score": 1
+      },
+      {
+        "maxDiff": 0.8,
+        "score": 0.75
+      },
+      {
+        "maxDiff": 1.3,
+        "score": 0.4
+      },
+      {
+        "maxDiff": 99,
+        "score": 0
+      }
+    ],
+    "texts": {
+      "match": "Intensidades equilibradas: charuto {cStrength} e bebida de corpo {dBody} — nenhum encobre o outro.",
+      "drinkStronger": "A bebida (corpo {dBody}) é mais intensa que o charuto ({cStrength}) e pode abafar as nuances da fumaça.",
+      "cigarStronger": "O charuto ({cStrength}) é mais forte que a bebida (corpo {dBody}); ela pode sumir diante da fumaça.",
+      "lighterByMoment": "Bebida um pouco mais leve que o charuto ({cStrength}) — desejável neste horário."
+    }
+  },
+  "flavor": {
+    "_doc": "Princípio 2 — complementaridade: notas iguais criam ressonância; famílias afins se completam. 'affinity' é simétrico (0-1). O score é a melhor combinação + bônus por combinações adicionais, limitado a 1. Em cada afinidade, 'a' é a família da BEBIDA e 'b' a do CHARUTO; quando o par aparece invertido usa-se 'reverseText'.",
+    "sameNote": {
+      "score": 1,
+      "text": "Notas de {cNote} nos dois lados se reforçam (harmonia por semelhança)."
+    },
+    "sameFamily": {
+      "score": 0.7,
+      "text": "Notas de {cNote} (charuto) e {dNote} (bebida) são da mesma família aromática e conversam bem."
+    },
+    "affinity": [
+      {
+        "a": "doce",
+        "b": "tostado",
+        "score": 0.95,
+        "text": "Notas de {dNote} da bebida complementam as de {cNote} do charuto — o clássico doce sobre torra."
+      },
+      {
+        "a": "doce",
+        "b": "terroso",
+        "score": 0.85,
+        "text": "A doçura ({dNote}) da bebida arredonda as notas de {cNote} do charuto."
+      },
+      {
+        "a": "doce",
+        "b": "amadeirado",
+        "score": 0.85,
+        "text": "Notas de {dNote} e {cNote} são parceiras clássicas, como o carvalho no bourbon."
+      },
+      {
+        "a": "doce",
+        "b": "especiado",
+        "score": 0.8,
+        "text": "Notas de {dNote} suavizam e emolduram as de {cNote} do charuto."
+      },
+      {
+        "a": "doce",
+        "b": "castanhas",
+        "score": 0.85,
+        "text": "Notas de {dNote} com {cNote} lembram praliné — complementaridade clássica."
+      },
+      {
+        "a": "doce",
+        "b": "cremoso",
+        "score": 0.75,
+        "text": "Notas de {dNote} conversam com o perfil cremoso ({cNote}) do charuto."
+      },
+      {
+        "a": "tostado",
+        "b": "terroso",
+        "score": 0.85,
+        "text": "Notas de {dNote} da bebida se encaixam nas de {cNote} do charuto: perfis escuros e profundos."
+      },
+      {
+        "a": "tostado",
+        "b": "castanhas",
+        "score": 0.85,
+        "text": "Notas de {dNote} e {cNote} se completam, como café com nozes."
+      },
+      {
+        "a": "tostado",
+        "b": "amadeirado",
+        "score": 0.75,
+        "text": "Notas de {dNote} da bebida ecoam as de {cNote} do charuto com tons de torra."
+      },
+      {
+        "a": "tostado",
+        "b": "cremoso",
+        "score": 0.8,
+        "text": "O perfil cremoso ({cNote}) do charuto suaviza as notas de {dNote}, como num cappuccino."
+      },
+      {
+        "a": "tostado",
+        "b": "frutado",
+        "score": 0.7,
+        "text": "Notas de {dNote} e {cNote}: fruta escura e torra se complementam."
+      },
+      {
+        "a": "frutado",
+        "b": "terroso",
+        "score": 0.7,
+        "text": "Notas de {dNote} da bebida iluminam as de {cNote} do charuto."
+      },
+      {
+        "a": "frutado",
+        "b": "especiado",
+        "score": 0.75,
+        "text": "Notas de {dNote} e {cNote} lembram um Porto especiado."
+      },
+      {
+        "a": "frutado",
+        "b": "amadeirado",
+        "score": 0.7,
+        "text": "Notas de {dNote} com {cNote}: fruta e madeira, como um vinho de barrica."
+      },
+      {
+        "a": "frutado",
+        "b": "castanhas",
+        "score": 0.75,
+        "text": "Notas de {dNote} e {cNote} se completam como num bolo de frutas."
+      },
+      {
+        "a": "cremoso",
+        "b": "castanhas",
+        "score": 0.8,
+        "text": "Notas de {dNote} e {cNote} formam um par macio e redondo."
+      },
+      {
+        "a": "cremoso",
+        "b": "amadeirado",
+        "score": 0.7,
+        "text": "Notas de {dNote} amaciam as de {cNote} do charuto."
+      },
+      {
+        "a": "cremoso",
+        "b": "floral",
+        "score": 0.65,
+        "text": "Notas de {dNote} e {cNote}: perfil delicado dos dois lados."
+      },
+      {
+        "a": "citrico",
+        "b": "cremoso",
+        "score": 0.7,
+        "text": "O frescor ({dNote}) da bebida corta e refresca as notas de {cNote} do charuto."
+      },
+      {
+        "a": "citrico",
+        "b": "amadeirado",
+        "score": 0.55,
+        "text": "O frescor ({dNote}) traz leveza às notas de {cNote} do charuto."
+      },
+      {
+        "a": "citrico",
+        "b": "terroso",
+        "score": 0.3,
+        "text": "A acidez ({dNote}) tende a brigar com as notas de {cNote} — combinação arriscada."
+      },
+      {
+        "a": "especiado",
+        "b": "amadeirado",
+        "score": 0.75,
+        "text": "Notas de {dNote} e {cNote} se somam num perfil quente e seco."
+      },
+      {
+        "a": "especiado",
+        "b": "tostado",
+        "score": 0.65,
+        "text": "Notas de {dNote} e {cNote} formam um conjunto escuro e quente."
+      },
+      {
+        "a": "defumado",
+        "b": "terroso",
+        "score": 0.75,
+        "text": "Notas de {dNote} da bebida ecoam as de {cNote} do charuto — combinação intensa."
+      },
+      {
+        "a": "defumado",
+        "b": "tostado",
+        "score": 0.7,
+        "text": "Notas de {dNote} e {cNote} somam camadas de torra e fumaça."
+      },
+      {
+        "a": "defumado",
+        "b": "cremoso",
+        "score": 0.6,
+        "text": "O perfil cremoso ({cNote}) do charuto equilibra as notas de {dNote} (contraste)."
+      },
+      {
+        "a": "defumado",
+        "b": "floral",
+        "score": 0.2,
+        "text": "Notas de {dNote} tendem a apagar as de {cNote}, mais delicadas."
+      },
+      {
+        "a": "floral",
+        "b": "doce",
+        "score": 0.6,
+        "text": "Notas de {dNote} e {cNote} formam um par leve e aromático."
+      }
+    ],
+    "noMatchText": "Os perfis aromáticos não têm pontes claras entre si.",
+    "reverseText": {
+      "text": "Notas de {cNote} do charuto e de {dNote} da bebida se complementam.",
+      "warnText": "Notas de {cNote} do charuto e de {dNote} da bebida tendem a brigar."
+    }
+  },
+  "balance": {
+    "_doc": "Princípio 3 — contraste equilibrado de doce/amargo/picante/ácido. Perfis somados das notas (0-3 após normalização). Cada regra: quando o charuto tem 'cigar.taste' >= min e a bebida 'drink.taste' >= min, aplica 'delta' (positivo = bom contraste, negativo = choque/exagero).",
+    "baseline": 0.5,
+    "rules": [
+      {
+        "id": "doce-x-picante",
+        "cigar": {
+          "taste": "picante",
+          "min": 1.2
+        },
+        "drink": {
+          "taste": "doce",
+          "min": 1.2
+        },
+        "delta": 0.35,
+        "text": "A doçura da bebida acalma a pimenta do charuto — contraste clássico."
+      },
+      {
+        "id": "doce-x-amargo",
+        "cigar": {
+          "taste": "amargo",
+          "min": 1.2
+        },
+        "drink": {
+          "taste": "doce",
+          "min": 1.2
+        },
+        "delta": 0.3,
+        "text": "O doce da bebida equilibra o amargor tostado do charuto."
+      },
+      {
+        "id": "picante-x-picante",
+        "cigar": {
+          "taste": "picante",
+          "min": 1.5
+        },
+        "drink": {
+          "taste": "picante",
+          "min": 1.5
+        },
+        "delta": -0.3,
+        "text": "Picante sobre picante satura o paladar — atenção ao excesso de especiarias."
+      },
+      {
+        "id": "amargo-x-amargo",
+        "cigar": {
+          "taste": "amargo",
+          "min": 1.8
+        },
+        "drink": {
+          "taste": "amargo",
+          "min": 1.8
+        },
+        "delta": -0.25,
+        "text": "Amargor dos dois lados pode ficar áspero; falta um ponto de doçura."
+      },
+      {
+        "id": "acido-x-forte",
+        "cigar": {
+          "taste": "amargo",
+          "min": 1.2
+        },
+        "drink": {
+          "taste": "acido",
+          "min": 1.6
+        },
+        "delta": -0.2,
+        "text": "Acidez alta da bebida tende a ressaltar a aspereza do charuto."
+      },
+      {
+        "id": "acido-x-suave",
+        "cigar": {
+          "taste": "doce",
+          "min": 0.8
+        },
+        "drink": {
+          "taste": "acido",
+          "min": 1.2
+        },
+        "delta": 0.15,
+        "text": "A acidez da bebida limpa o paladar entre as baforadas."
+      },
+      {
+        "id": "doce-x-doce",
+        "cigar": {
+          "taste": "doce",
+          "min": 1.8
+        },
+        "drink": {
+          "taste": "doce",
+          "min": 2.2
+        },
+        "delta": -0.15,
+        "text": "Doce demais dos dois lados pode ficar enjoativo."
+      }
+    ]
+  },
+  "context": {
+    "_doc": "Contexto de consumo. Pesos 0-1 por categoria; 'types' permite ajuste fino por tipo de bebida (somado à categoria, limitado a 0-1). 'bodyPreference' desloca a intensidade ideal (ex.: manhã pede algo mais leve).",
+    "moments": {
+      "manha": {
+        "label": "Manhã",
+        "categories": {
+          "cafe": 1,
+          "vinho": 0.2,
+          "whisky": 0.1,
+          "destilado": 0.1
+        },
+        "bodyPreference": -0.5,
+        "text": "De manhã o café é o parceiro natural; álcool pesado cedo cansa o paladar."
+      },
+      "tarde": {
+        "label": "Tarde",
+        "categories": {
+          "cafe": 0.8,
+          "vinho": 0.7,
+          "whisky": 0.6,
+          "destilado": 0.5
+        },
+        "bodyPreference": 0,
+        "types": {
+          "Espumante": 0.2,
+          "Vinho branco": 0.2
+        },
+        "text": "À tarde cabem cafés, vinhos e destilados mais leves."
+      },
+      "noite": {
+        "label": "Noite",
+        "categories": {
+          "cafe": 0.4,
+          "vinho": 0.9,
+          "whisky": 1,
+          "destilado": 1
+        },
+        "bodyPreference": 0.3,
+        "types": {
+          "Expresso": 0.2,
+          "Porto": 0.1
+        },
+        "text": "À noite destilados e vinhos de sobremesa são a escolha clássica."
+      }
+    },
+    "occasions": {
+      "sozinho": {
+        "label": "Relaxar sozinho",
+        "categories": {},
+        "types": {
+          "Single Malt": 0.15,
+          "Bourbon": 0.1,
+          "Rum envelhecido": 0.1
+        },
+        "text": "Para relaxar sozinho, vale algo contemplativo."
+      },
+      "amigos": {
+        "label": "Com amigos",
+        "categories": {
+          "whisky": 0.1,
+          "destilado": 0.1
+        },
+        "types": {
+          "Bourbon": 0.1,
+          "Rum envelhecido": 0.1,
+          "Cerveja": 0.1
+        },
+        "text": "Com amigos, bebidas fáceis de compartilhar."
+      },
+      "celebracao": {
+        "label": "Celebração",
+        "categories": {
+          "vinho": 0.2
+        },
+        "types": {
+          "Espumante": 0.4,
+          "Champagne": 0.4,
+          "Conhaque": 0.2,
+          "Porto": 0.15
+        },
+        "text": "Celebração combina com espumante ou um destilado especial."
+      }
+    }
+  },
+  "verdicts": [
+    {
+      "min": 0.8,
+      "label": "Harmonização excelente"
+    },
+    {
+      "min": 0.65,
+      "label": "Muito boa"
+    },
+    {
+      "min": 0.5,
+      "label": "Boa"
+    },
+    {
+      "min": 0,
+      "label": "Arriscada"
+    }
+  ],
+  "history": {
+    "_doc": "Aprendizado pessoal: cada estrela acima/abaixo de 3 nas suas avaliações anteriores do mesmo par soma/subtrai este valor ao score.",
+    "perStar": 0.04
+  }
+}
