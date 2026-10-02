@@ -24,12 +24,14 @@ const toText = (html) => decode(html.replace(/<script[\s\S]*?<\/script>|<style[\
 async function robotsAllows(path) {
   try {
     const txt = await get(`${BASE}/robots.txt`)
-    let applies = false
+    // vale o grupo "*" e também o do robô do Claude: se o site recusa IA, o script não roda
+    let applies = false, inUAs = false
     const rules = []
-    for (const line of txt.split('\n')) {
-      const [k, ...v] = line.split(':'); const val = v.join(':').trim()
-      if (/^user-agent$/i.test(k.trim())) applies = val === '*'
-      else if (applies && /^disallow$/i.test(k.trim()) && val) rules.push(val)
+    for (const raw of txt.split('\n')) {
+      const line = raw.replace(/#.*/, '')
+      const [k, ...v] = line.split(':'); const key = k.trim().toLowerCase(); const val = v.join(':').trim()
+      if (key === 'user-agent') { applies = (inUAs && applies) || ['*', 'claudebot', 'claude-user'].includes(val.toLowerCase()); inUAs = true }
+      else { inUAs = false; if (applies && key === 'disallow' && val) rules.push(val.replace(/\*$/, '')) }
     }
     const blocked = rules.find((r) => path.startsWith(r))
     if (blocked) console.error(`robots.txt bloqueia ${path} (regra ${blocked})`)
