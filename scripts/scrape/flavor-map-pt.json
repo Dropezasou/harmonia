@@ -1,0 +1,353 @@
+{
+ "_doc": "Descritor em português (como aparece nas descrições da Charutos e Tabacos) → nota(s) do app. Termos mais longos têm prioridade. Comparação ignora acentos e maiúsculas.",
+ "map": {
+  "cacau": [
+   "cacau"
+  ],
+  "chocolate amargo": [
+   "cacau"
+  ],
+  "chocolate": [
+   "chocolate"
+  ],
+  "cafe expresso": [
+   "expresso"
+  ],
+  "expresso": [
+   "expresso"
+  ],
+  "cafe": [
+   "cafe"
+  ],
+  "torra": [
+   "torrado"
+  ],
+  "tostado": [
+   "torrado"
+  ],
+  "torrado": [
+   "torrado"
+  ],
+  "pao": [
+   "torrado"
+  ],
+  "malte": [
+   "malte"
+  ],
+  "terroso": [
+   "terra"
+  ],
+  "terra": [
+   "terra"
+  ],
+  "couro": [
+   "couro"
+  ],
+  "cogumelo": [
+   "cogumelo"
+  ],
+  "feno": [
+   "feno"
+  ],
+  "madeira": [
+   "madeira"
+  ],
+  "amadeirado": [
+   "madeira"
+  ],
+  "carvalho": [
+   "carvalho"
+  ],
+  "cedro": [
+   "cedro"
+  ],
+  "pimenta branca": [
+   "pimenta-branca"
+  ],
+  "pimenta preta": [
+   "pimenta"
+  ],
+  "pimenta do reino": [
+   "pimenta"
+  ],
+  "pimenta": [
+   "pimenta"
+  ],
+  "apimentado": [
+   "pimenta"
+  ],
+  "especiarias": [
+   "especiarias"
+  ],
+  "especiaria": [
+   "especiarias"
+  ],
+  "condimentado": [
+   "especiarias"
+  ],
+  "picante": [
+   "especiarias"
+  ],
+  "alcacuz": [
+   "especiarias"
+  ],
+  "anis": [
+   "especiarias"
+  ],
+  "gengibre": [
+   "especiarias"
+  ],
+  "canela": [
+   "canela"
+  ],
+  "noz moscada": [
+   "noz-moscada"
+  ],
+  "noz-moscada": [
+   "noz-moscada"
+  ],
+  "cravo": [
+   "cravo"
+  ],
+  "mel": [
+   "mel"
+  ],
+  "caramelo": [
+   "caramelo"
+  ],
+  "toffee": [
+   "toffee"
+  ],
+  "melaco": [
+   "melaco"
+  ],
+  "baunilha": [
+   "baunilha"
+  ],
+  "acucar mascavo": [
+   "acucar-mascavo"
+  ],
+  "rapadura": [
+   "acucar-mascavo"
+  ],
+  "adocicado": [
+   "acucar-mascavo"
+  ],
+  "nozes": [
+   "nozes"
+  ],
+  "noz": [
+   "nozes"
+  ],
+  "castanha": [
+   "nozes"
+  ],
+  "castanhas": [
+   "nozes"
+  ],
+  "amendoim": [
+   "nozes"
+  ],
+  "amendoa": [
+   "amendoa"
+  ],
+  "amendoas": [
+   "amendoa"
+  ],
+  "avela": [
+   "avela"
+  ],
+  "frutas secas": [
+   "frutas-secas"
+  ],
+  "passas": [
+   "frutas-secas"
+  ],
+  "uva passa": [
+   "frutas-secas"
+  ],
+  "figo": [
+   "frutas-secas"
+  ],
+  "tamara": [
+   "frutas-secas"
+  ],
+  "ameixa": [
+   "frutas-escuras"
+  ],
+  "cereja": [
+   "frutas-escuras"
+  ],
+  "frutas vermelhas": [
+   "frutas-vermelhas"
+  ],
+  "frutado": [
+   "frutas-secas"
+  ],
+  "coco": [
+   "frutas-tropicais"
+  ],
+  "frutas tropicais": [
+   "frutas-tropicais"
+  ],
+  "maca": [
+   "maca-pera"
+  ],
+  "pera": [
+   "maca-pera"
+  ],
+  "citrico": [
+   "citrico"
+  ],
+  "citricas": [
+   "citrico"
+  ],
+  "limao": [
+   "citrico"
+  ],
+  "laranja": [
+   "casca-laranja"
+  ],
+  "casca de laranja": [
+   "casca-laranja"
+  ],
+  "cremoso": [
+   "creme"
+  ],
+  "creme": [
+   "creme"
+  ],
+  "cremosidade": [
+   "creme"
+  ],
+  "manteiga": [
+   "manteiga"
+  ],
+  "amanteigado": [
+   "manteiga"
+  ],
+  "floral": [
+   "floral"
+  ],
+  "flores": [
+   "floral"
+  ],
+  "herbal": [
+   "herbal"
+  ],
+  "herbaceo": [
+   "herbal"
+  ],
+  "ervas": [
+   "herbal"
+  ],
+  "defumado": [
+   "defumado"
+  ],
+  "fumaca": [
+   "defumado"
+  ],
+  "salino": [
+   "salino"
+  ],
+  "salgado": [
+   "salino"
+  ],
+  "mineral": [
+   "salino"
+  ],
+  "cremosa": [
+   "creme"
+  ],
+  "cremosas": [
+   "creme"
+  ],
+  "cremosos": [
+   "creme"
+  ],
+  "terrosa": [
+   "terra"
+  ],
+  "terrosas": [
+   "terra"
+  ],
+  "terrosos": [
+   "terra"
+  ],
+  "amadeirada": [
+   "madeira"
+  ],
+  "amadeiradas": [
+   "madeira"
+  ],
+  "amadeirados": [
+   "madeira"
+  ],
+  "adocicada": [
+   "acucar-mascavo"
+  ],
+  "adocicadas": [
+   "acucar-mascavo"
+  ],
+  "doce": [
+   "acucar-mascavo"
+  ],
+  "doces": [
+   "acucar-mascavo"
+  ],
+  "docura": [
+   "acucar-mascavo"
+  ],
+  "apimentada": [
+   "pimenta"
+  ],
+  "apimentadas": [
+   "pimenta"
+  ],
+  "especiado": [
+   "especiarias"
+  ],
+  "especiada": [
+   "especiarias"
+  ],
+  "tostada": [
+   "torrado"
+  ],
+  "tostadas": [
+   "torrado"
+  ],
+  "tostados": [
+   "torrado"
+  ],
+  "frutadas": [
+   "frutas-secas"
+  ],
+  "frutada": [
+   "frutas-secas"
+  ],
+  "florais": [
+   "floral"
+  ],
+  "citrica": [
+   "citrico"
+  ],
+  "amendoado": [
+   "amendoa"
+  ],
+  "cacaueiro": [
+   "cacau"
+  ],
+  "mocha": [
+   "cafe",
+   "chocolate"
+  ],
+  "capuccino": [
+   "cafe",
+   "creme"
+  ],
+  "cappuccino": [
+   "cafe",
+   "creme"
+  ]
+ }
+}

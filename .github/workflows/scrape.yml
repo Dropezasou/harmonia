@@ -1,0 +1,22 @@
+name: Coleta de fichas de charutos
+
+on:
+  workflow_dispatch:
+    inputs:
+      limit: { description: 'Quantidade de produtos', default: '20' }
+  pull_request:
+    paths: ['scripts/scrape/**', '.github/workflows/scrape.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  charutos-e-tabacos:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node scripts/scrape/cet-scrape.mjs --limit ${{ inputs.limit || '20' }} --out cet.json
+      - uses: actions/upload-artifact@v4
+        with: { name: cet-data, path: cet.json }
