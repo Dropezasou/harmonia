@@ -27,19 +27,22 @@ function flavors(text) {
   return { terms: found, notes: [...new Set(found.flatMap((t) => fmap[t]))] }
 }
 // tipo dentro de drink-types.json a partir do nome/descrição/país
+// tipo de drink-types.json: primeiro pelo nome e país (a descrição cita barris de bourbon, rye etc.)
 function typeOf(name, desc, pais) {
-  const t = norm(`${name} ${desc}`)
-  if (/tennessee|jack daniel/.test(t)) return 'Tennessee'
-  if (/\brye\b|centeio/.test(t)) return 'Rye'
-  if (/bourbon/.test(t)) return 'Bourbon'
-  if (/islay|laphroaig|lagavulin|ardbeg|bowmore|caol ila|bruichladdich|kilchoman/.test(t)) return 'Single Malt Islay'
-  if (/talisker|highland park|jura|arran|island/.test(t)) return 'Single Malt Island'
-  if (/single malt|puro malte/.test(t) && /sherry|xerez|oloroso|pedro ximenez/.test(t)) return 'Single Malt Sherry Cask'
-  if (/single malt|puro malte/.test(t) && /speyside|glenfiddich|glenlivet|macallan|balvenie|aberlour|glenfarclas/.test(t)) return 'Single Malt Speyside'
-  if (/single malt|puro malte/.test(t)) return 'Single Malt Highland'
-  if (/irlanda|irish|jameson|bushmills|redbreast/.test(t) || /irlanda/.test(norm(pais || ''))) return 'Irish'
-  if (/japao|japan|hibiki|yamazaki|nikka|hakushu|suntory/.test(t) || /japao/.test(norm(pais || ''))) return 'Japonês'
-  if (/estados unidos/.test(norm(pais || '')) || /american whiskey|kentucky/.test(t)) return 'Bourbon'
+  const n = norm(name), d = norm(desc), p = norm(pais || '')
+  const scot = /escocia/.test(p) || /scotch|single malt|islay|speyside|highland/.test(n)
+  if (/islay|laphroaig|lagavulin|ardbeg|bowmore|caol ila|bruichladdich|kilchoman|port charlotte|octomore/.test(n)) return 'Single Malt Islay'
+  if (/talisker|highland park|jura|arran|scapa/.test(n)) return 'Single Malt Island'
+  if (/tennessee|jack daniel|gentleman jack/.test(n)) return 'Tennessee'
+  if (!scot && /\brye\b/.test(n)) return 'Rye'
+  if (!scot && /bourbon/.test(n)) return 'Bourbon'
+  if (/irlanda/.test(p) || /irish|jameson|bushmills|redbreast|teeling/.test(n)) return 'Irish'
+  if (/japao/.test(p) || /hibiki|yamazaki|nikka|hakushu|suntory|toki/.test(n)) return 'Japonês'
+  if (/estados unidos/.test(p) || /kentucky|american whiskey/.test(n)) return /\brye\b/.test(n) ? 'Rye' : 'Bourbon'
+  const malt = /single malt|puro malte|\bmalt\b/.test(n + ' ' + d)
+  if (malt && /sherry|xerez|oloroso|pedro ximenez/.test(n + ' ' + d)) return 'Single Malt Sherry Cask'
+  if (malt && /speyside|glenfiddich|glenlivet|macallan|balvenie|aberlour|glenfarclas|glen grant|cardhu/.test(n + ' ' + d)) return 'Single Malt Speyside'
+  if (malt) return 'Single Malt Highland'
   return 'Blended Scotch'
 }
 function bodyOf(abv, text) {
@@ -52,7 +55,7 @@ function bodyOf(abv, text) {
 const idx = locs(await get(BASE + '/sitemap.xml'))
 let urls = []
 for (const s of idx.filter((u) => /product/i.test(u))) urls.push(...locs(await get(s)))
-urls = [...new Set(urls)].filter((u) => /\/whk-/.test(u) && !/kit|caixa|copo|miniatura|combo/i.test(u))
+urls = [...new Set(urls)].filter((u) => /\/whk-|whisk|bourbon|scotch|single-malt/i.test(u) && !/kit|caixa|copo|miniatura|combo|taca|decanter/i.test(u))
 console.error(`${urls.length} whiskies no sitemap`)
 
 const out = []

@@ -29,7 +29,9 @@ function fichaFrom(ls, labels) {
 
 const flavorMap = JSON.parse(readFileSync(new URL('./flavor-map-pt.json', import.meta.url))).map
 const coffeeMap = JSON.parse(readFileSync(new URL('./flavor-map-cafe.json', import.meta.url))).map
+// em café, a palavra "café" não é nota sensorial
 const allMap = { ...flavorMap, ...coffeeMap }
+for (const k of ['cafe', 'expresso', 'cafe expresso', 'torra', 'tostado', 'torrado']) delete allMap[k]
 const terms = Object.keys(allMap).sort((a, b) => b.length - a.length)
 const norm = (s) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
 function flavors(text) {
@@ -38,6 +40,7 @@ function flavors(text) {
   for (const t of terms) { const re = new RegExp(`[^a-z]${norm(t)}[^a-z]`, 'g'); if (re.test(rest)) { found.push(t); rest = rest.replace(re, ' | ') } }
   return { terms: found, notes: [...new Set(found.flatMap((t) => allMap[t]))] }
 }
+const bodyByRoast = (torra) => { const t = norm(torra || ''); return /clara/.test(t) ? 'leve' : /escura/.test(t) ? 'encorpado' : /media/.test(t) ? 'medio' : null }
 function bodyOf(text) {
   const t = norm(text)
   if (/corpo (alto|denso|intenso|encorpado|pronunciado|marcante|aveludado|cremoso|licoroso)|encorpad|corpo pronunciado/.test(t)) return 'encorpado'
@@ -90,7 +93,7 @@ for (const [key, site] of Object.entries(SITES)) {
       const r = site.parse(await get(u), u, pre)
       const text = [r.sensorial, r.descricao].filter(Boolean).join(' ')
       const fl = flavors(text)
-      results.push({ source: site.name, ...r, flavorTerms: fl.terms, notes: fl.notes, body: bodyOf(text) })
+      results.push({ source: site.name, ...r, name: r.name.replace(/\s*[–-]\s*\d+\s*g\s*$/i, '').replace(/\s+/g, ' ').trim(), flavorTerms: fl.terms, notes: fl.notes, body: bodyOf(text) || bodyByRoast(r.torra) })
       console.error('  ok', u)
     } catch (e) { console.error('  erro', e.message) }
   }
