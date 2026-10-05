@@ -8,15 +8,32 @@ on:
     paths: ['scripts/scrape/**', '.github/workflows/scrape.yml']
 
 permissions:
-  contents: read
+  contents: write
 
 jobs:
   charutos-e-tabacos:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
       - uses: actions/setup-node@v4
         with: { node-version: 22 }
-      - run: node scripts/scrape/cet-scrape.mjs --limit ${{ inputs.limit || '20' }} --out cet.json
+      - name: Coleta
+        id: coleta
+        run: |
+          LIMIT="${{ inputs.limit }}"
+          [ -z "$LIMIT" ] && LIMIT=$(cat scripts/scrape/cet-limit.txt 2>/dev/null || echo 20)
+          echo "limit=$LIMIT" >> "$GITHUB_OUTPUT"
+          node scripts/scrape/cet-scrape.mjs --limit "$LIMIT" --out cet.json
       - uses: actions/upload-artifact@v4
         with: { name: cet-data, path: cet.json }
+      # coleta completa (limite > 20): grava a base bruta na branch para integrar ao app
+      - name: Salvar base completa na branch
+        if: steps.coleta.outputs.limit > 20
+        run: |
+          mkdir -p data && cp cet.json data/cet-raw.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/cet-raw.json
+          git diff --cached --quiet || (git commit -m "Base coletada da Charutos e Tabacos" && git push)
