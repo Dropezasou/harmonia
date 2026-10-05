@@ -7,7 +7,13 @@ const DELAY = 2000
 const args = Object.fromEntries(process.argv.slice(2).join(' ').split('--').filter(Boolean).map((s) => s.trim().split(/\s+/)))
 const LIMIT = Number(args.limit || 10)
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
-const get = async (url) => { const r = await fetch(url, { headers: { 'User-Agent': UA } }); if (!r.ok) throw new Error(`${r.status} ${url}`); return r.text() }
+// até 4 tentativas com espera crescente: algumas lojas oscilam
+async function get(url, tries = 4) {
+  for (let i = 1; ; i++) {
+    try { const r = await fetch(url, { headers: { 'User-Agent': UA }, signal: AbortSignal.timeout(30000) }); if (!r.ok) throw new Error(`${r.status} ${url}`); return await r.text() }
+    catch (e) { if (i >= tries) throw new Error(`${e.cause?.code || e.message} ${url}`); await sleep(5000 * i) }
+  }
+}
 const locs = (xml) => [...xml.matchAll(/<loc>\s*([^<\s]+)\s*<\/loc>/g)].map((m) => m[1].replace(/&amp;/g, '&'))
 const decode = (s) => s.replace(/&nbsp;/g, ' ').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#8211;/g, '–').replace(/&#8220;|&#8221;/g, '"').replace(/&#0?39;|&#8217;/g, "'").replace(/&[a-z]+;|&#\d+;/g, ' ')
 const lines = (html) => decode(html.replace(/<script[\s\S]*?<\/script>|<style[\s\S]*?<\/style>/gi, ' ').replace(/<br\s*\/?>|<\/(p|li|div|h\d|tr|td|th|span|dt|dd|strong|label)>/gi, '\n').replace(/<[^>]+>/g, ' ')).split('\n').map((l) => l.replace(/\s+/g, ' ').trim()).filter(Boolean)
@@ -73,7 +79,8 @@ const SITES = {
 
 const results = []
 for (const [key, site] of Object.entries(SITES)) {
-  const urls = (await site.urls()).slice(0, LIMIT)
+  let urls
+  try { urls = (await site.urls()).slice(0, LIMIT) } catch (e) { console.error(`${site.name}: indisponível (${e.message})`); continue }
   console.error(`${site.name}: ${urls.length} URLs`)
   for (const u of urls) {
     await sleep(DELAY)

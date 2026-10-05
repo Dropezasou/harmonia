@@ -1,0 +1,10 @@
+{
+ "_doc": "Descritores de whisky/destilados (fichas em português) → notas do app. Complementa flavor-map-pt.json.",
+ "map": {
+  "butterscotch": ["toffee"], "caramelo amanteigado": ["toffee", "manteiga"], "frutas de caroco": ["frutas-escuras"], "frutas cristalizadas": ["frutas-secas"], "frutas maduras": ["frutas-secas"], "uvas passas": ["frutas-secas"],
+  "turfa": ["turfa"], "turfado": ["turfa"], "iodo": ["salino", "turfa"], "maresia": ["salino"], "sal marinho": ["salino"], "fumaca de turfa": ["turfa", "defumado"],
+  "xerez": ["frutas-secas", "nozes"], "sherry": ["frutas-secas", "nozes"], "porto": ["frutas-escuras"], "carvalho tostado": ["carvalho", "torrado"], "carvalho americano": ["carvalho", "baunilha"], "carvalho europeu": ["carvalho", "especiarias"],
+  "milho": ["acucar-mascavo"], "centeio": ["pimenta", "especiarias"], "cereal": ["malte"], "maltado": ["malte"], "biscoito": ["torrado"], "mel de urze": ["mel", "floral"],
+  "laranja cristalizada": ["casca-laranja"], "raspas de laranja": ["casca-laranja"], "cereja": ["frutas-escuras"], "banana": ["frutas-tropicais"], "coco": ["frutas-tropicais"]
+ }
+}
