@@ -3,6 +3,7 @@ import { STRENGTHS } from '../lib/knowledge'
 import { searchCigars, externalLinks } from '../lib/lookup'
 import { cigarTitle } from '../lib/store'
 import NotePicker, { NoteList } from './NotePicker'
+import PhotoLookup from './PhotoLookup'
 import { Button, Empty, Field, Input, Segmented, Sheet } from './ui'
 
 const blank = { brand: '', line: '', name: '', vitola: '', wrapper: '', binder: '', filler: '', strength: 'medio', notes: [], qty: 1 }
@@ -37,12 +38,13 @@ export default function Humidor({ data, onPair }) {
 function CigarForm({ item, onClose, data }) {
   const [f, setF] = useState(item)
   const [q, setQ] = useState('')
+  const [photoHits, setPhotoHits] = useState(null)
   const [lastItem, setLastItem] = useState(item)
-  if (item !== lastItem) { setLastItem(item); setF(item); setQ('') }
+  if (item !== lastItem) { setLastItem(item); setF(item); setQ(''); setPhotoHits(null) }
   if (!item || !f) return null
   const set = (k) => (e) => setF({ ...f, [k]: e?.target ? e.target.value : e })
-  const results = q.length > 2 ? searchCigars(q) : []
-  const apply = (c) => { setF({ ...f, ...c, notes: [...c.notes], qty: f.qty }); setQ('') }
+  const results = photoHits && !q ? photoHits : q.length > 2 ? searchCigars(q) : []
+  const apply = (c) => { setF({ ...f, ...c, strength: c.strength || f.strength, notes: [...(c.notes || [])], qty: f.qty }); setQ(''); setPhotoHits(null) }
   const submit = async () => { await data.save('cigars', { ...f, qty: Number(f.qty) || 0 }); onClose() }
 
   return (
@@ -52,10 +54,11 @@ function CigarForm({ item, onClose, data }) {
           <Field label="Buscar ficha técnica">
             <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="ex.: Padrón 1964, Cohiba Siglo" />
           </Field>
+          <div className="mt-2"><PhotoLookup kind="cigar" onResults={(found, text) => { setPhotoHits(found); setQ(found.length ? '' : text.split(' ').slice(0, 3).join(' ')) }} /></div>
           {results.map((c, i) => (
             <button key={i} onClick={() => apply(c)} className="mt-2 block w-full rounded-lg bg-bg p-2 text-left">
               <span className="font-medium">{cigarTitle(c)}</span>
-              <span className="block text-xs text-ink-3">{STRENGTHS[c.strength]} · capa {c.wrapper}</span>
+              <span className="block text-xs text-ink-3">{[STRENGTHS[c.strength], c.wrapper && `capa ${c.wrapper}`, c.source].filter(Boolean).join(' · ')}</span>
             </button>
           ))}
           {q.length > 2 && (
@@ -78,7 +81,7 @@ function CigarForm({ item, onClose, data }) {
         <Field label="Capote (binder)"><Input value={f.binder} onChange={set('binder')} /></Field>
         <Field label="Tripa (filler)"><Input value={f.filler} onChange={set('filler')} /></Field>
       </div>
-      <Field group label="Força"><Segmented options={STRENGTHS} value={f.strength} onChange={set('strength')} /></Field>
+      <Field group label="Força"><Segmented small options={STRENGTHS} value={f.strength} onChange={set('strength')} /></Field>
       <Field group label="Notas de sabor predominantes"><NotePicker value={f.notes} onChange={set('notes')} /></Field>
       <Field label="Quantidade no umidor"><Input type="number" inputMode="numeric" min="0" value={f.qty} onChange={set('qty')} /></Field>
       <div className="flex gap-2">

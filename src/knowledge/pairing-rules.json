@@ -10,7 +10,9 @@
     "_doc": "Princípio 1 — equilíbrio de corpo/intensidade: nenhum dos dois deve encobrir o outro. Escala 1-3. 'categoryOffset' corrige a intensidade percebida da categoria (destilados a 40%+ pesam mais que o corpo sugere).",
     "cigarScale": {
       "suave": 1,
+      "suave-medio": 1.5,
       "medio": 2,
+      "medio-pleno": 2.5,
       "pleno": 3
     },
     "drinkScale": {
