@@ -34,12 +34,12 @@ export function Input(props) {
   return <input {...props} className={inputCls} />
 }
 
-export function Segmented({ options, value, onChange }) {
+export function Segmented({ options, value, onChange, small }) {
   return (
     <div className="flex gap-1 rounded-lg bg-bg p-1">
       {Object.entries(options).map(([k, label]) => (
         <button key={k} type="button" onClick={() => onChange(value === k ? '' : k)}
-          className={`flex-1 rounded-md px-2 py-2 text-sm ${value === k ? 'bg-gold font-semibold text-bg' : 'text-ink-2'}`}>
+          className={`flex-1 rounded-md py-2 leading-tight ${small ? 'px-1 text-xs' : 'px-2 text-sm'} ${value === k ? 'bg-gold font-semibold text-bg' : 'text-ink-2'}`}>
           {label}
         </button>
       ))}

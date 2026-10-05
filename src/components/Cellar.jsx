@@ -3,6 +3,7 @@ import { BODIES, drinkTypes } from '../lib/knowledge'
 import { searchDrinks, externalLinks } from '../lib/lookup'
 import { drinkTitle } from '../lib/store'
 import NotePicker, { NoteList } from './NotePicker'
+import PhotoLookup from './PhotoLookup'
 import { Button, Chip, Empty, Field, Input, Segmented, Sheet, inputCls } from './ui'
 
 const CATS = drinkTypes.categories
@@ -40,8 +41,9 @@ export default function Cellar({ data }) {
 function DrinkForm({ item, onClose, data }) {
   const [f, setF] = useState(item)
   const [q, setQ] = useState('')
+  const [photoHits, setPhotoHits] = useState(null)
   const [lastItem, setLastItem] = useState(item)
-  if (item !== lastItem) { setLastItem(item); setF(item); setQ('') }
+  if (item !== lastItem) { setLastItem(item); setF(item); setQ(''); setPhotoHits(null) }
   if (!item || !f) return null
   const set = (k) => (e) => setF({ ...f, [k]: e?.target ? e.target.value : e })
   const types = drinkTypes.types[f.category] || {}
@@ -51,8 +53,8 @@ function DrinkForm({ item, onClose, data }) {
     setF({ ...f, type: t, ...(preset && !f.notes.length ? { notes: [...preset.notes], body: preset.body } : {}) })
   }
   const submit = async () => { await data.save('drinks', { ...f, qty: f.qty ? 1 : 0 }); onClose() }
-  const results = q.length > 2 ? searchDrinks(q) : []
-  const apply = (d) => { setF({ ...f, ...d, notes: [...d.notes] }); setQ('') }
+  const results = photoHits && !q ? photoHits : q.length > 2 ? searchDrinks(q) : []
+  const apply = (d) => { setF({ ...f, ...d, notes: [...d.notes] }); setQ(''); setPhotoHits(null) }
 
   return (
     <Sheet open title={f.id ? 'Editar bebida' : 'Nova bebida'} onClose={onClose}>
@@ -61,6 +63,7 @@ function DrinkForm({ item, onClose, data }) {
           <Field label="Buscar ficha da bebida">
             <Input value={q} onChange={(e) => setQ(e.target.value)} placeholder="ex.: Macallan 12, Zacapa, Graham's" />
           </Field>
+          <div className="mt-2"><PhotoLookup kind="drink" onResults={(found, text) => { setPhotoHits(found); setQ(found.length ? '' : text.split(' ').slice(0, 3).join(' ')) }} /></div>
           {results.map((d, i) => (
             <button key={i} onClick={() => apply(d)} className="mt-2 block w-full rounded-lg bg-bg p-2 text-left">
               <span className="font-medium">{CATS[d.category]?.icon} {drinkTitle(d)}</span>

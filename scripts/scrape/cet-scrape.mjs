@@ -51,7 +51,7 @@ function flavors(text) {
 const STRENGTH = { 'suave': 'suave', 'leve': 'suave', 'suave medio': 'suave-medio', 'leve medio': 'suave-medio', 'medio': 'medio', 'medio forte': 'medio-pleno', 'medio encorpado': 'medio-pleno', 'medio pleno': 'medio-pleno', 'forte': 'pleno', 'encorpado': 'pleno', 'pleno': 'pleno', 'muito forte': 'pleno', 'extra forte': 'pleno', 'media': 'medio', 'media forte': 'medio-pleno', 'suave media': 'suave-medio', 'media suave': 'suave-medio' }
 const strengthOf = (raw) => STRENGTH[norm(raw || '').replace(/[-/]/g, ' ').replace(/\s+(a|e|para)\s+/g, ' ').replace(/[^a-z ]/g, '').replace(/\s+/g, ' ').trim()] || null
 
-const LABELS = ['Pa[ií]s de origem', 'Fabricado', 'Vitola de galera', 'Anel', 'Pontua[cç][oõ]es mundiais[^:]{0,8}', 'IMPORTANTE', 'Origem', 'Capa', 'Capote', 'Miolo', 'Tripa', 'Enchimento', 'Fortaleza', 'For[cç]a', 'Intensidade', 'Vitola', 'Bitola', 'Formato', 'Comprimento', 'Medidas', 'Tamanho', 'Ring Gauge', 'Ring', 'Calibre', 'Cepo', 'Sabor(?:es)?', 'Notas', 'Fluxo', 'Pa[ií]s']
+const LABELS = ['Se[cç][aã]o', 'Embalagem', 'Venda', 'Pa[ií]s de origem', 'Fabricado', 'Vitola de galera', 'Anel', 'Pontua[cç][oõ]es mundiais[^:]{0,8}', 'IMPORTANTE', 'Origem', 'Capa', 'Capote', 'Miolo', 'Tripa', 'Enchimento', 'Fortaleza', 'For[cç]a', 'Intensidade', 'Vitola', 'Bitola', 'Formato', 'Comprimento', 'Medidas', 'Tamanho', 'Ring Gauge', 'Ring', 'Calibre', 'Cepo', 'Sabor(?:es)?', 'Notas', 'Fluxo', 'Pa[ií]s']
 // a ficha vem colada: "Origem: NicaráguaCapa: EquadorCapote: ..."
 function field(text, label) {
   const next = LABELS.join('|')
