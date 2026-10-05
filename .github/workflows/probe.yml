@@ -1,0 +1,19 @@
+name: Avaliar fontes de dados
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths: ['scripts/scrape/probe-sources.mjs', '.github/workflows/probe.yml']
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - run: node scripts/scrape/probe-sources.mjs | tee probe.md
+      - run: cat probe.md >> "$GITHUB_STEP_SUMMARY"
