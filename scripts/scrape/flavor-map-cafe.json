@@ -1,0 +1,14 @@
+{
+ "_doc": "Descritores típicos de café especial → notas do app. Complementa flavor-map-pt.json (comparação sem acento).",
+ "map": {
+  "flor de laranjeira": ["floral", "citrico"], "jasmim": ["floral"], "rosas": ["floral"], "hibisco": ["floral", "frutas-vermelhas"],
+  "maracuja": ["frutas-tropicais", "citrico"], "manga": ["frutas-tropicais"], "abacaxi": ["frutas-tropicais"], "pessego": ["frutas-tropicais"], "damasco": ["frutas-secas"], "frutas amarelas": ["frutas-tropicais"], "frutas tropicais": ["frutas-tropicais"],
+  "morango": ["frutas-vermelhas"], "framboesa": ["frutas-vermelhas"], "amora": ["frutas-escuras"], "jabuticaba": ["frutas-escuras"], "uva": ["frutas-vermelhas"], "frutas escuras": ["frutas-escuras"], "frutas maduras": ["frutas-secas"], "uva passa": ["frutas-secas"],
+  "tangerina": ["citrico"], "lima": ["citrico"], "acidez citrica": ["citrico"], "malica": ["maca-pera"],
+  "creme brule": ["caramelo", "creme"], "doce de leite": ["caramelo", "creme"], "butter toffee": ["toffee", "manteiga"], "butter toffees": ["toffee", "manteiga"], "toffees": ["toffee"],
+  "chocolate ao leite": ["chocolate", "creme"], "chocolate meio amargo": ["chocolate", "cacau"], "nibs de cacau": ["cacau"], "chocolatoso": ["chocolate"], "brigadeiro": ["chocolate", "caramelo"],
+  "cana de acucar": ["acucar-mascavo"], "caldo de cana": ["acucar-mascavo"], "acucar mascavo": ["acucar-mascavo"], "panela": ["acucar-mascavo"],
+  "biscoito": ["torrado"], "cereais": ["malte"], "castanha do para": ["nozes"], "castanha de caju": ["nozes"], "pralina": ["caramelo", "nozes"],
+  "vinho": ["frutas-escuras"], "vinhoso": ["frutas-escuras"], "licoroso": ["frutas-secas"], "amburana": ["madeira", "baunilha", "canela"], "barricas": ["carvalho"], "barril": ["carvalho"], "rum": ["melaco"], "bourbon": ["baunilha", "carvalho"]
+ }
+}

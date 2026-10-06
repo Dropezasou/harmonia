@@ -1,0 +1,35 @@
+name: Coleta de whiskies
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths: ['scripts/scrape/drinks-*', 'scripts/scrape/flavor-map-destilados.json', '.github/workflows/whisky.yml']
+
+permissions:
+  contents: write
+
+jobs:
+  whiskies:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+      - id: coleta
+        shell: bash
+        run: |
+          set -o pipefail
+          LIMIT=$(cat scripts/scrape/drinks-limit.txt 2>/dev/null || echo 20)
+          echo "limit=$LIMIT" >> "$GITHUB_OUTPUT"
+          node scripts/scrape/drinks-scrape.mjs --limit "$LIMIT" --out whiskies.json | tee -a "$GITHUB_STEP_SUMMARY"
+      - name: Salvar base completa na branch
+        if: steps.coleta.outputs.limit > 20
+        run: |
+          mkdir -p data && cp whiskies.json data/whisky-raw.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase -q origin "${{ github.head_ref || github.ref_name }}" || true
+          git add data/whisky-raw.json
+          git diff --cached --quiet || (git commit -m "Base coletada de whiskies" && git push)
