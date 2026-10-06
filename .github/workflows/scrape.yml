@@ -4,8 +4,6 @@ on:
   workflow_dispatch:
     inputs:
       limit: { description: 'Quantidade de produtos', default: '20' }
-  pull_request:
-    paths: ['scripts/scrape/cet-*', 'scripts/scrape/flavor-map-pt.json', '.github/workflows/scrape.yml']
 
 permissions:
   contents: write
