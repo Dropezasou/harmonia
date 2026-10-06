@@ -38,7 +38,7 @@ function flavors(text) {
   let rest = ` ${norm(text)} `
   const found = []
   for (const t of terms) { const re = new RegExp(`[^a-z]${norm(t)}[^a-z]`, 'g'); if (re.test(rest)) { found.push(t); rest = rest.replace(re, ' | ') } }
-  return { terms: found, notes: [...new Set(found.flatMap((t) => allMap[t]))] }
+  return { terms: found, notes: [...new Set(found.flatMap((t) => allMap[t]))].filter((n) => n !== 'cafe') }
 }
 const bodyByRoast = (torra) => { const t = norm(torra || ''); return /clara/.test(t) ? 'leve' : /escura/.test(t) ? 'encorpado' : /media/.test(t) ? 'medio' : null }
 function bodyOf(text) {
